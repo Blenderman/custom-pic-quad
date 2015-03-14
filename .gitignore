@@ -28,8 +28,24 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
+# VS-generated object and
+# binary files
+# =========================
+**/bin
+**/obj
+
+# =========================
+# MPLab-X generated files
+# =========================
+**/build
+**/debug
+**/release
+**/dist
+
+# =========================
 # C/C++/SourceSafe files
 # =========================
+.exe
 .bsc
 .ncb
 .pch
