@@ -88,7 +88,7 @@ void	RCInit(int IL)
 	// Reset control automaton
 	//-----------------------------------------------------
 	_RCState		= 0;	
-	_CN17IE			= 1;	// Enable CN interrupt on Ch1 (CN17/RC7)
+	_CN15IE			= 1;	// Enable CN interrupt on Ch5 (CN15/RB11) - THROTTLE
 							// Hopefully CN interrupt will happen
 							// before the Timer3 interrupt :)	
 	//-----------------------------------------------------

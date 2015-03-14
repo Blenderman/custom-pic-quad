@@ -32,29 +32,29 @@ typedef enum
 //-----------------------------------------------------
 // 8-bit un-signed integer
 //-----------------------------------------------------
-typedef unsigned char           BYTE;
-typedef unsigned char           byte;
-typedef unsigned char           uchar;
+typedef unsigned char   BYTE;
+typedef unsigned char   byte;
+typedef unsigned char   uchar;
 
 //-----------------------------------------------------
 // 8-bit signed integer
 //-----------------------------------------------------
-typedef signed char           	sbyte;
+typedef signed char     sbyte;
 
 
 //-----------------------------------------------------
 // 16-bit un-signed integer (regular and volatile)
 //-----------------------------------------------------
-typedef unsigned int      	WORD;
-typedef	unsigned int		uint;
-typedef	volatile uint		vuint;
+typedef unsigned int    WORD;
+typedef	unsigned int	uint;
+typedef	volatile uint	vuint;
 
 
 //-----------------------------------------------------
 // 32-bit un-signed integer
 //-----------------------------------------------------
-typedef unsigned long        DWORD;
-typedef unsigned long        ulong;
+typedef unsigned long   DWORD;
+typedef unsigned long   ulong;
 
 //=====================================================
 #endif

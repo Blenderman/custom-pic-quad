@@ -6,7 +6,7 @@
 #include "I2C\I2C.h"
 #include "MPU6050\MPU6050.h"
 #include "MPU6050\MPU6050_Local.h"
-#include "UART\UART.h"
+#include "UART\UART_TX.h"
 
 
 int main(void)
@@ -44,7 +44,7 @@ int main(void)
 	// BaudRate =  500	=> 1,250,000 bps
 	// BaudRate = 1000	=> 2,500,000 bps
 	//*******************************************************************
-	MPUSample		Sample;
+	MPUData		Sample;
 	//*******************************************************************
 	if ( MPUAsyncStart() )
 		BLIDeadStop("E", 1);

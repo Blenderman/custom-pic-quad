@@ -12,7 +12,7 @@
 //==================================================================
 // Definitions shared across I2C modules
 //------------------------------------------------------------------
-// I2C Asynchronous Access Subscribers max count
+// I2C Asynchronous Access Subscribers max queue count
 //------------------------------------------------------------------
 #define I2CMaxAsyncRqst		1
 //==================================================================

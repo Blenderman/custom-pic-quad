@@ -189,7 +189,7 @@ typedef	void (*I2CCallBack)(uint			CallBackArg,
 // "ClientParam" is the "black-box" value provided by the
 // client while registering interrupr callback routine. Passed
 // to the respective callback routine "as-is".
-// I2Cx is the index of the I2C module processing interrupr
+// I2Cx is the index of the I2C module processing interrupt
 // and pCON, pSTAT, pTRN, and pRCV are the pointers to CONTROL,
 // STATUS, Transmit, and Receive registers of this I2C module.
 //------------------------------------------------------------

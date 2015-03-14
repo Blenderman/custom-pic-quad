@@ -32,7 +32,7 @@ void __attribute__((__interrupt__, __no_auto_psv__)) _T3Interrupt(void)
 	// Reset control automaton
 	//-----------------------------------------------------
 	_RCState		= 0;	
-	_CN15IE			= 1;	// Enable CN interrupt on Ch5 (CN15/RB11)
+	_CN15IE			= 1;	// Enable CN interrupt on Ch5 (CN15/RB11) - THROTTLE
 							// Hopefully CN interrupt will happen
 							// before the Timer3 interrupt :)	
 	//-----------------------------------------------------
@@ -54,6 +54,16 @@ void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void)
 	CNEN2	= 0;	// Notification Interrupts
 	//-------------
 	_CNIF 	= 0; 	// Reset CN interrupt request (if any...)
+
+//
+//	_LATB7 = _RB11;
+//	_LATB8 = _RB10;
+//	_LATB9 = _RC9;
+//	_LATC6 = _RC8;
+//
+	
+
+
 
 	//================================================================
 	// Second, we need to capture the timestamp of the interrupt...
