@@ -28,6 +28,12 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
+# Windows shortcuts
+# =========================
+*.DS_Store
+.DS_Store
+
+# =========================
 # VS-generated object and
 # binary files
 # =========================
@@ -45,22 +51,22 @@ $RECYCLE.BIN/
 # =========================
 # C/C++/SourceSafe files
 # =========================
-.exe
-.bsc
-.ncb
-.pch
-.pdb
-.rdp
-.sbr
-.scc
-.suo
-.tmp
-.vspscc
-.vssscc
-.dat
-.elf
-.hex
-.o.d
-.o
+*.exe
+*.bsc
+*.ncb
+*.pch
+*.pdb
+*.rdp
+*.sbr
+*.scc
+*.suo
+*.tmp
+*.vspscc
+*.vssscc
+*.dat
+*.elf
+*.hex
+*.o.d
+*.o
 UsrClass.dat
-.DS_Store
+
