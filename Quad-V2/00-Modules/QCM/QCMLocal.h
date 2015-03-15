@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "QCM\QCM.h"
+=======
+#include "QCM/QCM.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __QCMLocal_H
@@ -6,12 +10,21 @@
 //=====================================================
 // HW Components
 //-------------------------
+<<<<<<< HEAD
 #include "TMR\TMR.h"
 #include "ADC\ADC.h"
 //-------------------------
 // Step local storage
 //-------------------------
 #include "QCM\QCMStepData.h"
+=======
+#include "TMR/TMR.h"
+#include "ADC/ADC.h"
+//-------------------------
+// Step local storage
+//-------------------------
+#include "QCM/QCMStepData.h"
+>>>>>>> Kopelow
 
 //*****************************************************
 // QCM internal data objects

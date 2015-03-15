@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "UART\UART_TX.h"
 #include "UART\UART_TX_Profile.h"
+=======
+#include "UART/UART_TX.h"
+#include "UART/UART_TX_Profile.h"
+>>>>>>> Kopelow
 
 
 //==================================================================

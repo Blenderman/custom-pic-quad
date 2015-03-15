@@ -57,6 +57,7 @@
           <itemPath>../00-Modules/TMR/TMR_ISR.c</itemPath>
         </logicalFolder>
         <logicalFolder name="UART" displayName="UART" projectFiles="true">
+<<<<<<< HEAD
           <itemPath>../00-Modules/UART/UART_TX.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_API.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Init.c</itemPath>
@@ -64,6 +65,15 @@
           <itemPath>../00-Modules/UART/UART_TX_Local.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Local.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Profile.h</itemPath>
+=======
+          <itemPath>../00-Modules/UART/UART_TX_API.c</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_Init.c</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_ISR.c</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX.h</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.h</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Profile.h</itemPath>
+>>>>>>> Kopelow
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
@@ -88,7 +98,11 @@
         <platformTool>PICkit2PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.21</languageToolchainVersion>
+<<<<<<< HEAD
         <platform>3</platform>
+=======
+        <platform>4</platform>
+>>>>>>> Kopelow
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -126,7 +140,11 @@
         <property key="enable-short-double" value="false"/>
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
+<<<<<<< HEAD
         <property key="extra-include-directories" value="..\00-Modules"/>
+=======
+        <property key="extra-include-directories" value="../00-Modules"/>
+>>>>>>> Kopelow
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>

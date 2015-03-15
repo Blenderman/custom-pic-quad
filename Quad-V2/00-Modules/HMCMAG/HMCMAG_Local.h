@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 #include "TMR\TMR.h"
 #include "I2C\I2C.h"
 //*************************************************************
 #include "HMCMAG\HMCMAG.h"
 #include "HMCMAG\HMCMAG_Profile.h"
+=======
+#include "TMR/TMR.h"
+#include "I2C/I2C.h"
+//*************************************************************
+#include "HMCMAG/HMCMAG.h"
+#include "HMCMAG/HMCMAG_Profile.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __HMCMAG_Local_H

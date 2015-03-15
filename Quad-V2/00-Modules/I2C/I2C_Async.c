@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "I2C\I2C_Local.h"
+=======
+#include "I2C/I2C_Local.h"
+>>>>>>> Kopelow
 
 //============================================================
 // Asynchronous I2C API (visible externally) component

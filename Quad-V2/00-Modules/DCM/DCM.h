@@ -1,6 +1,11 @@
 #include "System.h"
+<<<<<<< HEAD
 #include "Vector\Vector.h"
 #include "Matrix3D\Matrix3D.h"
+=======
+#include "Vector/Vector.h"
+#include "Matrix3D/Matrix3D.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __DCM_H

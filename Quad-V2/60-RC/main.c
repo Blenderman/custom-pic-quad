@@ -1,11 +1,20 @@
 #include "System.h"
 //---------------------------------
+<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
 #include "MCM\MCM.h"
 #include "RC\RC.h"
 #include "UART\UART_TX.h"
+=======
+#include "Init/Init.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "MCM/MCM.h"
+#include "RC/RC.h"
+#include "UART/UART_TX.h"
+>>>>>>> Kopelow
 
 int main(void)
 	{
@@ -14,10 +23,18 @@ int main(void)
 	TMRInit(2);			// Initialize Timer interface with Priority=2
 	BLIInit();			// Initialize Signal interface
 	//--------------------------
+<<<<<<< HEAD
 	BLISignalON();
 	MCMInitF(50, 2500);	// Initialize Motor Control at 50 Hz with setting
 						// Throttle to HIGH for delay interval to let ESC
 						// capture Throttle range
+=======
+	BLIAsyncMorse("S", 1);	// dot-dot-dot
+	MCMInitF(50, 2500);	// Initialize Motor Control at 50 Hz with setting
+						// Throttle to HIGH for delay interval to let ESC
+						// capture Throttle range
+	BLIAsyncStop();
+>>>>>>> Kopelow
 	//--------------------------
 	RCInit(4);			// Initialize Receiver interface with Priority=4
 	//--------------------------
@@ -38,9 +55,16 @@ int main(void)
 	// BaudRate =  500	=> 1,250,000 bps
 	// BaudRate = 1000	=> 2,500,000 bps
 	//*******************************************************************
+<<<<<<< HEAD
 	BLISignalOFF();
 	TMRDelay(2000); 	// Wait for extra 2 sec - to let ESC arm...
 						// (finish the song :) )
+=======
+	BLISignalON();
+	TMRDelay(2000); 	// Wait for extra 2 sec - to let ESC arm...
+						// (finish the song :) )
+	BLISignalOFF();
+>>>>>>> Kopelow
 	//==================================================================
 	MCMData		MC;
 	RCData		RC;

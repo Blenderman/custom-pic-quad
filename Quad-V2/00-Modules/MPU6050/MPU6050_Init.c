@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "MPU6050\MPU6050_Local.h"
 #include "I2C\I2C_Local.h"
+=======
+#include "MPU6050/MPU6050_Local.h"
+#include "I2C/I2C_Local.h"
+>>>>>>> Kopelow
 
 //************************************************************
 uint	MPUInit(byte RateDiv, byte DLPF)	

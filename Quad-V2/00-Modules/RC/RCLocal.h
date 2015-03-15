@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "RC\RC.h"
 #include "TMR\TMRLocal.h"
+=======
+#include "RC/RC.h"
+#include "TMR/TMRLocal.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __RCLocal_H

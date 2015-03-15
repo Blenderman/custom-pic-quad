@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "I2C\I2C_Local.h"
 #include "TMR\TMR.h"
+=======
+#include "I2C/I2C_Local.h"
+#include "TMR/TMR.h"
+>>>>>>> Kopelow
 
 //************************************************************
 // Synchronous WRITE - I2C API (visible externally) component

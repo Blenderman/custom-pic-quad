@@ -50,6 +50,7 @@
           <itemPath>../00-Modules/TMR/TMR_ISR.c</itemPath>
         </logicalFolder>
         <logicalFolder name="UART" displayName="UART" projectFiles="true">
+<<<<<<< HEAD
           <itemPath>../00-Modules/UART/UART_TX.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_API.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Init.c</itemPath>
@@ -57,6 +58,15 @@
           <itemPath>../00-Modules/UART/UART_TX_Local.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Local.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Profile.h</itemPath>
+=======
+          <itemPath>../00-Modules/UART/UART_TX_API.c</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_Init.c</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_ISR.c</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX.h</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.h</itemPath>
+          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Profile.h</itemPath>
+>>>>>>> Kopelow
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
@@ -78,10 +88,17 @@
         <targetDevice>PIC24HJ128GP204</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
+<<<<<<< HEAD
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.21</languageToolchainVersion>
         <platform>3</platform>
+=======
+        <platformTool>PICkit2PlatformTool</platformTool>
+        <languageToolchain>XC16</languageToolchain>
+        <languageToolchainVersion>1.21</languageToolchainVersion>
+        <platform>4</platform>
+>>>>>>> Kopelow
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -119,7 +136,11 @@
         <property key="enable-short-double" value="false"/>
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
+<<<<<<< HEAD
         <property key="extra-include-directories" value="..\00-Modules"/>
+=======
+        <property key="extra-include-directories" value="../00-Modules"/>
+>>>>>>> Kopelow
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -222,6 +243,7 @@
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
       </C30Global>
+<<<<<<< HEAD
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -278,6 +300,15 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
+=======
+      <PICkit2PlatformTool>
+        <property key="pk2settings.3state" value="false"/>
+        <property key="pk2settings.preserveee" value="false"/>
+        <property key="pk2settings.setvddvoltage" value=""/>
+        <property key="pk2settings.userpgmexec" value="true"/>
+        <property key="pk2settings.usetargetpower" value="false"/>
+      </PICkit2PlatformTool>
+>>>>>>> Kopelow
     </conf>
   </confs>
 </configurationDescriptor>

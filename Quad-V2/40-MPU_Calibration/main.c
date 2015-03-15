@@ -1,5 +1,6 @@
 #include "System.h"
 //---------------------------------
+<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -8,6 +9,19 @@
 #include "MPU6050\MPU6050.h"
 #include "MPU6050\MPU6050_Local.h"
 #include "UART\UART.h"
+=======
+#include "Init/Init.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "ADC/ADC.h"
+#include "I2C/I2C.h"
+#include "MPU6050/MPU6050.h"
+#include "MPU6050/MPU6050_Local.h"
+// rich kopelow - 8/19/14
+// change the following include
+// #include "UART/UART.h"
+#include "UART/UART_TX.h"
+>>>>>>> Kopelow
 
 void DeadStop(char * pStr, uint Length);
 
@@ -113,6 +127,10 @@ int main(void)
 		UARTPostWhenReady((uchar*)&UData, sizeof(UData));
 		//---------------------------------------------	
 		}
+<<<<<<< HEAD
+=======
+        BLISignalON();
+>>>>>>> Kopelow
 	return 1;
 	}
 

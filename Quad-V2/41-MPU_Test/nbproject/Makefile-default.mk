@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=gnumkdir -p
+MKDIR=mkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -45,6 +45,7 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
+<<<<<<< HEAD
 SOURCEFILES_QUOTED_IF_SPACED=../00-Modules/BLI/BLI.c ../00-Modules/BLI/BLIInit.c ../00-Modules/BLI/BLILocal.c ../00-Modules/BLI/BLIMorse.c ../00-Modules/I2C/I2C_Async.c ../00-Modules/I2C/I2C_Init.c ../00-Modules/I2C/I2C_ISR.c ../00-Modules/I2C/I2C_Local.c ../00-Modules/I2C/I2C_Sync.c ../00-Modules/I2C/I2C_SyncRead.c ../00-Modules/I2C/I2C_SyncWrite.c ../00-Modules/Init/Init.c ../00-Modules/MPU6050/MPU6050_Async.c ../00-Modules/MPU6050/MPU6050_Init.c ../00-Modules/MPU6050/MPU6050_ISR_INT1.c ../00-Modules/MPU6050/MPU6050_Local.c ../00-Modules/MPU6050/MPU6050_Mgmt.c ../00-Modules/MPU6050/MPU6050_Reset.c ../00-Modules/MPU6050/MPU6050_Sync.c ../00-Modules/TMR/TMR.c ../00-Modules/TMR/TMRInit.c ../00-Modules/TMR/TMRLocal.c ../00-Modules/TMR/TMR_ISR.c ../00-Modules/UART/UART_TX_API.c ../00-Modules/UART/UART_TX_Init.c ../00-Modules/UART/UART_TX_ISR.c ../00-Modules/UART/UART_TX_Local.c main.c
 
 # Object Files Quoted if spaced
@@ -56,6 +57,19 @@ OBJECTFILES=${OBJECTDIR}/_ext/261189241/BLI.o ${OBJECTDIR}/_ext/261189241/BLIIni
 
 # Source Files
 SOURCEFILES=../00-Modules/BLI/BLI.c ../00-Modules/BLI/BLIInit.c ../00-Modules/BLI/BLILocal.c ../00-Modules/BLI/BLIMorse.c ../00-Modules/I2C/I2C_Async.c ../00-Modules/I2C/I2C_Init.c ../00-Modules/I2C/I2C_ISR.c ../00-Modules/I2C/I2C_Local.c ../00-Modules/I2C/I2C_Sync.c ../00-Modules/I2C/I2C_SyncRead.c ../00-Modules/I2C/I2C_SyncWrite.c ../00-Modules/Init/Init.c ../00-Modules/MPU6050/MPU6050_Async.c ../00-Modules/MPU6050/MPU6050_Init.c ../00-Modules/MPU6050/MPU6050_ISR_INT1.c ../00-Modules/MPU6050/MPU6050_Local.c ../00-Modules/MPU6050/MPU6050_Mgmt.c ../00-Modules/MPU6050/MPU6050_Reset.c ../00-Modules/MPU6050/MPU6050_Sync.c ../00-Modules/TMR/TMR.c ../00-Modules/TMR/TMRInit.c ../00-Modules/TMR/TMRLocal.c ../00-Modules/TMR/TMR_ISR.c ../00-Modules/UART/UART_TX_API.c ../00-Modules/UART/UART_TX_Init.c ../00-Modules/UART/UART_TX_ISR.c ../00-Modules/UART/UART_TX_Local.c main.c
+=======
+SOURCEFILES_QUOTED_IF_SPACED=../00-Modules/BLI/BLI.c ../00-Modules/BLI/BLIInit.c ../00-Modules/BLI/BLILocal.c ../00-Modules/BLI/BLIMorse.c ../00-Modules/I2C/I2C_Async.c ../00-Modules/I2C/I2C_Init.c ../00-Modules/I2C/I2C_ISR.c ../00-Modules/I2C/I2C_Local.c ../00-Modules/I2C/I2C_Sync.c ../00-Modules/I2C/I2C_SyncRead.c ../00-Modules/I2C/I2C_SyncWrite.c ../00-Modules/Init/Init.c ../00-Modules/MPU6050/MPU6050_Async.c ../00-Modules/MPU6050/MPU6050_Init.c ../00-Modules/MPU6050/MPU6050_ISR_INT1.c ../00-Modules/MPU6050/MPU6050_Local.c ../00-Modules/MPU6050/MPU6050_Mgmt.c ../00-Modules/MPU6050/MPU6050_Reset.c ../00-Modules/MPU6050/MPU6050_Sync.c ../00-Modules/TMR/TMR.c ../00-Modules/TMR/TMRInit.c ../00-Modules/TMR/TMRLocal.c ../00-Modules/TMR/TMR_ISR.c ../00-Modules/UART/UART_TX_API.c ../00-Modules/UART/UART_TX_Init.c ../00-Modules/UART/UART_TX_ISR.c /Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c main.c
+
+# Object Files Quoted if spaced
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/261189241/BLI.o ${OBJECTDIR}/_ext/261189241/BLIInit.o ${OBJECTDIR}/_ext/261189241/BLILocal.o ${OBJECTDIR}/_ext/261189241/BLIMorse.o ${OBJECTDIR}/_ext/261195156/I2C_Async.o ${OBJECTDIR}/_ext/261195156/I2C_Init.o ${OBJECTDIR}/_ext/261195156/I2C_ISR.o ${OBJECTDIR}/_ext/261195156/I2C_Local.o ${OBJECTDIR}/_ext/261195156/I2C_Sync.o ${OBJECTDIR}/_ext/261195156/I2C_SyncRead.o ${OBJECTDIR}/_ext/261195156/I2C_SyncWrite.o ${OBJECTDIR}/_ext/492825802/Init.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Async.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Init.o ${OBJECTDIR}/_ext/1095620897/MPU6050_ISR_INT1.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Local.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Mgmt.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Reset.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Sync.o ${OBJECTDIR}/_ext/261206579/TMR.o ${OBJECTDIR}/_ext/261206579/TMRInit.o ${OBJECTDIR}/_ext/261206579/TMRLocal.o ${OBJECTDIR}/_ext/261206579/TMR_ISR.o ${OBJECTDIR}/_ext/492512300/UART_TX_API.o ${OBJECTDIR}/_ext/492512300/UART_TX_Init.o ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o ${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/261189241/BLI.o.d ${OBJECTDIR}/_ext/261189241/BLIInit.o.d ${OBJECTDIR}/_ext/261189241/BLILocal.o.d ${OBJECTDIR}/_ext/261189241/BLIMorse.o.d ${OBJECTDIR}/_ext/261195156/I2C_Async.o.d ${OBJECTDIR}/_ext/261195156/I2C_Init.o.d ${OBJECTDIR}/_ext/261195156/I2C_ISR.o.d ${OBJECTDIR}/_ext/261195156/I2C_Local.o.d ${OBJECTDIR}/_ext/261195156/I2C_Sync.o.d ${OBJECTDIR}/_ext/261195156/I2C_SyncRead.o.d ${OBJECTDIR}/_ext/261195156/I2C_SyncWrite.o.d ${OBJECTDIR}/_ext/492825802/Init.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_Async.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_Init.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_ISR_INT1.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_Local.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_Mgmt.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_Reset.o.d ${OBJECTDIR}/_ext/1095620897/MPU6050_Sync.o.d ${OBJECTDIR}/_ext/261206579/TMR.o.d ${OBJECTDIR}/_ext/261206579/TMRInit.o.d ${OBJECTDIR}/_ext/261206579/TMRLocal.o.d ${OBJECTDIR}/_ext/261206579/TMR_ISR.o.d ${OBJECTDIR}/_ext/492512300/UART_TX_API.o.d ${OBJECTDIR}/_ext/492512300/UART_TX_Init.o.d ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o.d ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d ${OBJECTDIR}/main.o.d
+
+# Object Files
+OBJECTFILES=${OBJECTDIR}/_ext/261189241/BLI.o ${OBJECTDIR}/_ext/261189241/BLIInit.o ${OBJECTDIR}/_ext/261189241/BLILocal.o ${OBJECTDIR}/_ext/261189241/BLIMorse.o ${OBJECTDIR}/_ext/261195156/I2C_Async.o ${OBJECTDIR}/_ext/261195156/I2C_Init.o ${OBJECTDIR}/_ext/261195156/I2C_ISR.o ${OBJECTDIR}/_ext/261195156/I2C_Local.o ${OBJECTDIR}/_ext/261195156/I2C_Sync.o ${OBJECTDIR}/_ext/261195156/I2C_SyncRead.o ${OBJECTDIR}/_ext/261195156/I2C_SyncWrite.o ${OBJECTDIR}/_ext/492825802/Init.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Async.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Init.o ${OBJECTDIR}/_ext/1095620897/MPU6050_ISR_INT1.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Local.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Mgmt.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Reset.o ${OBJECTDIR}/_ext/1095620897/MPU6050_Sync.o ${OBJECTDIR}/_ext/261206579/TMR.o ${OBJECTDIR}/_ext/261206579/TMRInit.o ${OBJECTDIR}/_ext/261206579/TMRLocal.o ${OBJECTDIR}/_ext/261206579/TMR_ISR.o ${OBJECTDIR}/_ext/492512300/UART_TX_API.o ${OBJECTDIR}/_ext/492512300/UART_TX_Init.o ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o ${OBJECTDIR}/main.o
+
+# Source Files
+SOURCEFILES=../00-Modules/BLI/BLI.c ../00-Modules/BLI/BLIInit.c ../00-Modules/BLI/BLILocal.c ../00-Modules/BLI/BLIMorse.c ../00-Modules/I2C/I2C_Async.c ../00-Modules/I2C/I2C_Init.c ../00-Modules/I2C/I2C_ISR.c ../00-Modules/I2C/I2C_Local.c ../00-Modules/I2C/I2C_Sync.c ../00-Modules/I2C/I2C_SyncRead.c ../00-Modules/I2C/I2C_SyncWrite.c ../00-Modules/Init/Init.c ../00-Modules/MPU6050/MPU6050_Async.c ../00-Modules/MPU6050/MPU6050_Init.c ../00-Modules/MPU6050/MPU6050_ISR_INT1.c ../00-Modules/MPU6050/MPU6050_Local.c ../00-Modules/MPU6050/MPU6050_Mgmt.c ../00-Modules/MPU6050/MPU6050_Reset.c ../00-Modules/MPU6050/MPU6050_Sync.c ../00-Modules/TMR/TMR.c ../00-Modules/TMR/TMRInit.c ../00-Modules/TMR/TMRLocal.c ../00-Modules/TMR/TMR_ISR.c ../00-Modules/UART/UART_TX_API.c ../00-Modules/UART/UART_TX_Init.c ../00-Modules/UART/UART_TX_ISR.c /Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c main.c
+>>>>>>> Kopelow
 
 
 CFLAGS=
@@ -261,12 +275,21 @@ ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o: ../00-Modules/UART/UART_TX_ISR.c  nbp
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../00-Modules/UART/UART_TX_ISR.c  -o ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1    -omf=elf -D__PIC24H__ -fast-math -O0 -I"../00-Modules" -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+<<<<<<< HEAD
 ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o: ../00-Modules/UART/UART_TX_Local.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/492512300 
 	@${RM} ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o.d 
 	@${RM} ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../00-Modules/UART/UART_TX_Local.c  -o ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/492512300/UART_TX_Local.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1    -omf=elf -D__PIC24H__ -fast-math -O0 -I"../00-Modules" -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/492512300/UART_TX_Local.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+=======
+${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o: /Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1566098207 
+	@${RM} ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c  -o ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PICKIT2=1    -omf=elf -D__PIC24H__ -fast-math -O0 -I"../00-Modules" -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+>>>>>>> Kopelow
 	
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -458,12 +481,21 @@ ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o: ../00-Modules/UART/UART_TX_ISR.c  nbp
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../00-Modules/UART/UART_TX_ISR.c  -o ${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o.d"        -g -omf=elf -D__PIC24H__ -fast-math -O0 -I"../00-Modules" -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/492512300/UART_TX_ISR.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+<<<<<<< HEAD
 ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o: ../00-Modules/UART/UART_TX_Local.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/492512300 
 	@${RM} ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o.d 
 	@${RM} ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../00-Modules/UART/UART_TX_Local.c  -o ${OBJECTDIR}/_ext/492512300/UART_TX_Local.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/492512300/UART_TX_Local.o.d"        -g -omf=elf -D__PIC24H__ -fast-math -O0 -I"../00-Modules" -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/492512300/UART_TX_Local.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+=======
+${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o: /Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1566098207 
+	@${RM} ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c  -o ${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d"        -g -omf=elf -D__PIC24H__ -fast-math -O0 -I"../00-Modules" -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1566098207/UART_TX_Local.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+>>>>>>> Kopelow
 	
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -497,7 +529,11 @@ else
 dist/${CND_CONF}/${IMAGE_TYPE}/41-MPU_Test.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/41-MPU_Test.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -omf=elf -D__PIC24H__ -fast-math -Wl,,--defsym=__MPLAB_BUILD=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem$(MP_EXTRA_LD_POST) 
+<<<<<<< HEAD
 	${MP_CC_DIR}\\xc16-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/41-MPU_Test.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} -a  -omf=elf  
+=======
+	${MP_CC_DIR}/xc16-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/41-MPU_Test.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} -a  -omf=elf  
+>>>>>>> Kopelow
 	
 endif
 
@@ -517,7 +553,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif

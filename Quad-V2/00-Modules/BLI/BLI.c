@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "BLI\BLILocal.h"
+=======
+#include "BLI/BLILocal.h"
+>>>>>>> Kopelow
 
 void	BLISignalON(void)
 	{

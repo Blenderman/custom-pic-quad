@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "MPL3115\MPL3115_Local.h"
 #include "I2C\I2C_Local.h"
+=======
+#include "MPL3115/MPL3115_Local.h"
+#include "I2C/I2C_Local.h"
+>>>>>>> Kopelow
 
 #include <math.h>
 

@@ -1,5 +1,6 @@
 #include "System.h"
 //---------------------------------
+<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -14,6 +15,22 @@
 #include "IMU\IMU.h"
 
 #include "DBG\DBG.h"
+=======
+#include "Init/Init.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "ADC/ADC.h"
+#include "I2C/I2C.h"
+#include "MPU6050/MPU6050.h"
+#ifdef __MAG_Use__
+#include "HMCMAG/HMCMAG.h"
+#endif
+#include "UART/UART_TX.h"
+#include "DCM/DCM.h"
+#include "IMU/IMU.h"
+
+#include "DBG/DBG.h"
+>>>>>>> Kopelow
 
 int main(void)
 	{
@@ -38,7 +55,11 @@ int main(void)
 		BLIDeadStop("EM", 2);
 	#endif
 	//--------------------------
+<<<<<<< HEAD
 	UARTInitTX(6, 48);	// Initialize UART1 for TX on IPL=6 at 115200 bps
+=======
+	UARTInitTX(6, 350);	// Initialize UART1 for TX on IPL=6 at 115200 bps
+>>>>>>> Kopelow
 						// BaudRate =  1	=>   2400 bps
 						// BaudRate =  2	=>   4800 bps
 						// ...
@@ -62,7 +83,12 @@ int main(void)
 		} 		UARTData;
 	//*******************************************************************
 	DBG_1_ON();
+<<<<<<< HEAD
 	StCount = 	IMUInit();
+=======
+	//StCount = 	IMUInit();
+	StCount = 	IMUReset();
+>>>>>>> Kopelow
 	DBG_1_OFF();
 	//*******************************************************************
 	BLISignalOFF();
@@ -82,7 +108,11 @@ int main(void)
 		UARTData.Azimuth	= IMUResult.Azimuth;
 		#endif
 		//----------------------------
+<<<<<<< HEAD
 		UARTPostIfReady((uchar*)&UARTData, sizeof(UARTData));
+=======
+		UARTPostWhenReady((uchar*)&UARTData, sizeof(UARTData));
+>>>>>>> Kopelow
 		//---------------------------------------------	
 		BLISignalFlip();
 		}

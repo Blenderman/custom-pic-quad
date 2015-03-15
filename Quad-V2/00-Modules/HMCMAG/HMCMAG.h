@@ -1,6 +1,10 @@
 #include "System.h"
 //*****************************************************
+<<<<<<< HEAD
 #include "Vector\Vector.h"
+=======
+#include "Vector/Vector.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __HMCMAG_H

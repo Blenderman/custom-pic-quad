@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "DCM\DCMLocal.h"
+=======
+#include "DCM/DCMLocal.h"
+>>>>>>> Kopelow
 
 //=============================================================
 // DCMGetMatrix returns current Rotation Matrix.

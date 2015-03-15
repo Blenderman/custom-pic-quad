@@ -1,8 +1,14 @@
 #include "System.h"
 
+<<<<<<< HEAD
 #include "RC\RC.h"
 #include "DCM\DCM.h"
 #include "MCM\MCM.h"
+=======
+#include "RC/RC.h"
+#include "DCM/DCM.h"
+#include "MCM/MCM.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __QCM_H

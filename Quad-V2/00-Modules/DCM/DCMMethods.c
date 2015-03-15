@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "DCM\DCMLocal.h"
+=======
+#include "DCM/DCMLocal.h"
+>>>>>>> Kopelow
 
 //==================================================================================
 DCM*	_DCMMultiply(DCM* pLeft, DCM* pRight, DCM* pResult)

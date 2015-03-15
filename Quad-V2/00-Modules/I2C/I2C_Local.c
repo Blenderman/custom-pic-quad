@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "I2C\I2C_Local.h"
+=======
+#include "I2C/I2C_Local.h"
+>>>>>>> Kopelow
 
 //==================================================================
 volatile byte	_I2C_IL			= 0; 	// I2C interrupt level (set in I2CInit)

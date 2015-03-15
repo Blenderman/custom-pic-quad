@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "RC\RCLocal.h"
+=======
+#include "RC/RCLocal.h"
+>>>>>>> Kopelow
 
 //************************************************************
 // RC-related Interrupt Routines
@@ -32,7 +36,11 @@ void __attribute__((__interrupt__, __no_auto_psv__)) _T3Interrupt(void)
 	// Reset control automaton
 	//-----------------------------------------------------
 	_RCState		= 0;	
+<<<<<<< HEAD
 	_CN15IE			= 1;	// Enable CN interrupt on Ch5 (CN15/RB11) - THROTTLE
+=======
+	_CN15IE			= 1;	// Enable CN interrupt on Ch5 (CN15/RB11)
+>>>>>>> Kopelow
 							// Hopefully CN interrupt will happen
 							// before the Timer3 interrupt :)	
 	//-----------------------------------------------------
@@ -55,6 +63,7 @@ void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void)
 	//-------------
 	_CNIF 	= 0; 	// Reset CN interrupt request (if any...)
 
+<<<<<<< HEAD
 //
 //	_LATB7 = _RB11;
 //	_LATB8 = _RB10;
@@ -65,6 +74,8 @@ void __attribute__((interrupt, no_auto_psv)) _CNInterrupt(void)
 
 
 
+=======
+>>>>>>> Kopelow
 	//================================================================
 	// Second, we need to capture the timestamp of the interrupt...
 	//----------------------------------------------------------------

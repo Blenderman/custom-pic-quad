@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "ADC\ADCLocal.h"
+=======
+#include "ADC/ADCLocal.h"
+>>>>>>> Kopelow
 
 //************************************************************
 void	ADCInit(uint IL)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "MCM\MCMLocal.h"
+=======
+#include "MCM/MCMLocal.h"
+>>>>>>> Kopelow
 
 //============================================
 uint	_MC_Init		= 0;

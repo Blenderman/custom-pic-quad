@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "HMCMAG\HMCMAG_Local.h"
+=======
+#include "HMCMAG/HMCMAG_Local.h"
+>>>>>>> Kopelow
 //*******************************************************
 
 

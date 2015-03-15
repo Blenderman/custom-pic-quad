@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "DCM\DCMLocal.h"
+=======
+#include "DCM/DCMLocal.h"
+>>>>>>> Kopelow
 
 //==================================================================================
 DCM*	_DCMCopy(DCM* pBaseDCM, DCM* pNewDCM)

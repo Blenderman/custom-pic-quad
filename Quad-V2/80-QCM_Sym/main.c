@@ -1,5 +1,6 @@
 #include "System.h"
 //---------------------------------
+<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -15,6 +16,23 @@
 #include "DEF\DEF.h"
 
 #include "QCM\QCMStepData.h"		// Needed for Telemetry data
+=======
+#include "Init/Init.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "MCM/MCM.h"
+#include "RC/RCSym.h"
+#include "ADC/ADC.h"
+#include "I2C/I2C.h"
+#include "MPU6050/MPU6050.h"
+#include "UART/UART_TX.h"
+#include "DCM/DCM.h"
+#include "IMU/IMU.h"
+#include "QCM/QCM.h"
+#include "DEF/DEF.h"
+
+#include "QCM/QCMStepData.h"		// Needed for Telemetry data
+>>>>>>> Kopelow
 
 //---------------------------------
 // Header for optional HW components
@@ -202,7 +220,11 @@ int main(void)
 	//--------------------------
 	I2CInit(5, 1);		// Initialize I2C1 module with IPL=5 and Fscl=400 KHz
 	//--------------------------
+<<<<<<< HEAD
 	UARTInitTX(6, 350);	// Initialize UART1 for TX on IPL=6 at 
+=======
+	UARTInitTX(6, 48);	// Initialize UART1 for TX on IPL=6 at
+>>>>>>> Kopelow
 	// BaudRate =   48	=>   115,200 bps	- ZigBEE
 	//--------------------------------------
 	// BaudRate =  100	=>   250,000 bps
@@ -306,7 +328,12 @@ Re_Start:
 	// Start IMU and wait until orientation estimate stabilizes
 	//------------------------------------------------------------------
 	BLIAsyncMorse(	"E", 1);		// dit
+<<<<<<< HEAD
 	IMUInit();
+=======
+	//IMUInit();
+        IMUReset();
+>>>>>>> Kopelow
 	//------------------------------------------------------------------
 	QCMReset();			// Initialize (reset) QCM variables
 	//------------------------------------------------------------------

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "UART\UART_TX_Local.h"
+=======
+#include "UART/UART_TX_Local.h"
+>>>>>>> Kopelow
 
 
 //************************************************************

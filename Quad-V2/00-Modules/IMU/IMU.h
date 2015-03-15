@@ -1,7 +1,13 @@
 #include "System.h"
+<<<<<<< HEAD
 #include "MPU6050\MPU6050.h"
 #include "HMCMAG\HMCMAG.h"
 #include "DCM\DCM.h"
+=======
+#include "MPU6050/MPU6050.h"
+#include "HMCMAG/HMCMAG.h"
+#include "DCM/DCM.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __IMU_H

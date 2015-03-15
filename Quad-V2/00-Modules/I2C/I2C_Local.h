@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "I2C\I2C.h"
 #include "I2C\I2C_Profile.h"
+=======
+#include "I2C/I2C.h"
+#include "I2C/I2C_Profile.h"
+>>>>>>> Kopelow
 
 //==================================================================
 #ifndef __I2C_Local_H

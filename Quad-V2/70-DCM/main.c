@@ -1,5 +1,6 @@
 #include "System.h"
 //---------------------------------
+<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -8,6 +9,16 @@
 #include "MPU6050\MPU6050.h"
 #include "UART\UART.h"
 #include "DCM\DCM.h"
+=======
+#include "Init/Init.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "ADC/ADC.h"
+#include "I2C/I2C.h"
+#include "MPU6050/MPU6050.h"
+#include "UART/UART_TX.h"
+#include "DCM/DCM.h"
+>>>>>>> Kopelow
 
 struct
 	{
@@ -71,7 +82,12 @@ int main(void)
 	//*******************************************************************
 	uint		RC		= 0;
 	//----------------------------
+<<<<<<< HEAD
 	MPUSample	MPUReading;
+=======
+	//MPUSample	MPUReading;
+	MPUData 	MPUReading;
+>>>>>>> Kopelow
 	//----------------------------
 	//*******************************************************************
 	if (MPUAsyncStart())
@@ -90,6 +106,10 @@ int main(void)
 		RC 	= MPUAsyncReadWhenReady(&MPUReading);
 		if (RC) BLIDeadStop("T", 1);
 		//----------------------------
+<<<<<<< HEAD
+=======
+// need Time Stamp as first argument
+>>>>>>> Kopelow
 		IsReady = DCMPerformStep(	&MPUReading.G, &MPUReading.A, 
 									&TMData.IMUResult);
 		//----------------------------

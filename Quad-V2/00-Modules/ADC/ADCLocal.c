@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "ADC\ADCLocal.h"
+=======
+#include "ADC/ADCLocal.h"
+>>>>>>> Kopelow
 
 //==================================================================
 uint			_ADCIL			= 4;	// ADC default interrupt level

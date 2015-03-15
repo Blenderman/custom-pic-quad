@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "TMR\TMRLocal.h"
+=======
+#include "TMR/TMRLocal.h"
+>>>>>>> Kopelow
 
 
 

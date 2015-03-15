@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include "MCM\MCM.h"
 #include "TMR\TMR.h"
+=======
+#include "MCM/MCM.h"
+#include "TMR/TMR.h"
+>>>>>>> Kopelow
 
 //=====================================================
 #ifndef __MCMLocal_H
