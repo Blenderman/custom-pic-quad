@@ -1,0 +1,66 @@
+# =========================
+# Windows image file caches
+# =========================
+Thumbs.db
+ehthumbs.db
+
+# =========================
+# Folder config file
+# =========================
+Desktop.ini
+
+# =========================
+# Recycle Bin used on file shares
+# =========================
+$RECYCLE.BIN/
+
+# =========================
+# Windows Installer files
+# =========================
+*.cab
+*.msi
+*.msm
+*.msp
+
+# =========================
+# Windows shortcuts
+# =========================
+*.lnk
+
+# =========================
+# VS-generated object and
+# binary files
+# =========================
+**/bin
+**/obj
+
+# =========================
+# MPLab-X generated files
+# =========================
+**/build
+**/debug
+**/release
+**/dist
+
+# =========================
+# C/C++/SourceSafe files
+# =========================
+.exe
+.bsc
+.ncb
+.pch
+.pdb
+.rdp
+.sbr
+.scc
+.suo
+.tmp
+.vspscc
+.vssscc
+.dat
+.elf
+.hex
+.o.d
+.o
+UsrClass.dat
+.DS_Store
