@@ -28,6 +28,11 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
+# OSX files
+# =========================
+*.DS_Store
+
+# =========================
 # VS-generated object and
 # binary files
 # =========================
