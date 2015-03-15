@@ -28,16 +28,11 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
-<<<<<<< HEAD
 # OSX files
 # =========================
 *.DS_Store
-=======
-# Windows shortcuts
-# =========================
-*.DS_Store
 .DS_Store
->>>>>>> Kopelow
+
 
 # =========================
 # VS-generated object and
@@ -57,26 +52,6 @@ $RECYCLE.BIN/
 # =========================
 # C/C++/SourceSafe files
 # =========================
-<<<<<<< HEAD
-.exe
-.bsc
-.ncb
-.pch
-.pdb
-.rdp
-.sbr
-.scc
-.suo
-.tmp
-.vspscc
-.vssscc
-.dat
-.elf
-.hex
-.o.d
-.o
-UsrClass.dat
-=======
 *.exe
 *.bsc
 *.ncb
@@ -96,4 +71,3 @@ UsrClass.dat
 *.o
 UsrClass.dat
 
->>>>>>> Kopelow
