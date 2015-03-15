@@ -1,11 +1,11 @@
 #include "System.h"
 //---------------------------------
-#include "Init\Init.h"
-#include "Init\Switches.h"
-#include "TMR\TMR.h"
-#include "BLI\BLI.h"
+#include "Init/Init.h"
+#include "Init/Switches.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
 //---------------------------------
-#include "SDL\SDL.h"
+#include "SDL/SDL.h"
 
 
 int main(void)

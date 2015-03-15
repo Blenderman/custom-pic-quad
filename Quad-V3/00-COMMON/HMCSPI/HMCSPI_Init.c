@@ -1,4 +1,4 @@
-#include "HMCSPI\HMCSPI_Local.h"
+#include "HMCSPI/HMCSPI_Local.h"
 
 //==================================================================
 HMC_RC	HMC_Init(byte IL, byte ODR, byte Gain, byte DLPF)

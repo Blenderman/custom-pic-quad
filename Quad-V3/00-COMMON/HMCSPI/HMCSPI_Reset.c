@@ -1,4 +1,4 @@
-#include "HMCSPI\HMCSPI_Local.h"
+#include "HMCSPI/HMCSPI_Local.h"
 
 //==================================================================
 // <editor-fold defaultstate="collapsed" desc="HMC_RC	HMC_ReSet(byte ODR, byte Gain, byte DLPF)">

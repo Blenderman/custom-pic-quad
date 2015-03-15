@@ -1,5 +1,5 @@
-#include "MPL\MPL_Local.h"
-#include "I2C\I2C_Local.h"
+#include "MPL/MPL_Local.h"
+#include "I2C/I2C_Local.h"
 
 #include <math.h>
 

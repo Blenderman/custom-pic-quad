@@ -1,4 +1,4 @@
-#include "HMCSPI\HMCSPI_Local.h"
+#include "HMCSPI/HMCSPI_Local.h"
 
 //-------------------------------------------------------------
 // Forward declaration of a helper function

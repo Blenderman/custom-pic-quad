@@ -1,4 +1,4 @@
-#include "HMCSPI\HMCSPI_Local.h"
+#include "HMCSPI/HMCSPI_Local.h"
 
 //==================================================================
 uint				_HMC_Init	= 0;	// Not initialized

@@ -1,5 +1,5 @@
-#include "SDL\SDL.h"
-#include "SDL\SDL_Profile.h"
+#include "SDL/SDL.h"
+#include "SDL/SDL_Profile.h"
 
 
 //==================================================================

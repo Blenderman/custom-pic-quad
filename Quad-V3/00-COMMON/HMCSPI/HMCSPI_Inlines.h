@@ -1,5 +1,5 @@
 #ifndef HMCSPI_LOCAL_H
-	#include "HMCSPI\HMCSPI_Local.h"
+	#include "HMCSPI/HMCSPI_Local.h"
 #endif
 
 //==================================================================

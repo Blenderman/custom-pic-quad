@@ -1,4 +1,4 @@
-#include "SDL\SDL_Local.h"
+#include "SDL/SDL_Local.h"
 
 //************************************************************
 void	SDLInit(uint IL, SDL_BAUD_RATE BaudRate)

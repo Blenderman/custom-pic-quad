@@ -1,13 +1,13 @@
 #include "System.h"
 //---------------------------------
-#include "Init\Init.h"
-#include "Init\Switches.h"
-#include "TMR\TMR.h"
-#include "BLI\BLI.h"
-#include "SDL\SDL.h"
+#include "Init/Init.h"
+#include "Init/Switches.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "SDL/SDL.h"
 //---------------------------------
-#include "MPU\MPU.h"	// MPU-6050 - gyroscope/accelerometer
-#include "MPL\MPL.h"	// MPL-3115A2 - barometric altimeter
+#include "MPU/MPU.h"	// MPU-6050 - gyroscope/accelerometer
+#include "MPL/MPL.h"	// MPL-3115A2 - barometric altimeter
 
 int main(void)
 	{

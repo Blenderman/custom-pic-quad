@@ -1,4 +1,4 @@
-#include "SDL\SDL_Local.h"
+#include "SDL/SDL_Local.h"
 
 //==================================================================
 byte				_SDL_IL_TX	= 4; 	// UART Transmitter

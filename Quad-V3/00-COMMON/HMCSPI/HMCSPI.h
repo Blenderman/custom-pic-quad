@@ -1,5 +1,5 @@
 #include "System.h"
-#include "Vector\Vector.h"
+#include "Vector/Vector.h"
 //=====================================================
 #ifndef HMCSPI_H
 #define	HMCSPI_H

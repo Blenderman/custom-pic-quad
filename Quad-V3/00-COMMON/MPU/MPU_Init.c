@@ -1,5 +1,5 @@
-#include "MPU\MPU_Local.h"
-#include "I2C\I2C_Local.h"
+#include "MPU/MPU_Local.h"
+#include "I2C/I2C_Local.h"
 
 //************************************************************
 uint	MPUInit(byte RateDiv, byte DLPF,

@@ -1,7 +1,7 @@
-#include "HMCSPI\HMCSPI.h"
-#include "HMCSPI\HMCSPI_Profile.h"
+#include "HMCSPI/HMCSPI.h"
+#include "HMCSPI/HMCSPI_Profile.h"
 
-#include "TMR\TMR.h"
+#include "TMR/TMR.h"
 
 //==================================================================
 #ifndef HMCSPI_LOCAL_H
@@ -89,4 +89,4 @@ extern  _HMCRawData	_HMC_Sample;// Asynchronous sample...
 //==================================================================
 #endif	/* HMCSPI_LOCAL_H */
 
-#include "HMCSPI\HMCSPI_Inlines.h"
+#include "HMCSPI/HMCSPI_Inlines.h"

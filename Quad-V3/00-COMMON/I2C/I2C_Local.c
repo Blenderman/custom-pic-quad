@@ -1,4 +1,4 @@
-#include "I2C\I2C_Local.h"
+#include "I2C/I2C_Local.h"
 
 //==================================================================
 // Variables shared (across I2C modules) - set in I2CInit

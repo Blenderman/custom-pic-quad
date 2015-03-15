@@ -1,12 +1,12 @@
 #include "System.h"
 //---------------------------------
-#include "Init\Init.h"
-#include "Init\Switches.h"
-#include "TMR\TMR.h"
-#include "BLI\BLI.h"
-#include "SDL\SDL.h"
+#include "Init/Init.h"
+#include "Init/Switches.h"
+#include "TMR/TMR.h"
+#include "BLI/BLI.h"
+#include "SDL/SDL.h"
 //---------------------------------
-#include "MPL\MPL.h"
+#include "MPL/MPL.h"
 
 int main(void)
 	{

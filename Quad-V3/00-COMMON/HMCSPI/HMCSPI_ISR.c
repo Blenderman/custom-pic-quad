@@ -1,4 +1,4 @@
-#include "HMCSPI\HMCSPI_Local.h"
+#include "HMCSPI/HMCSPI_Local.h"
 
 //************************************************************
 // INTx Interrupt Routines (Data Ready trigger from HMC)
