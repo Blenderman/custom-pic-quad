@@ -28,11 +28,10 @@ $RECYCLE.BIN/
 *.lnk
 
 # =========================
-# OSX files
+# OSX Files
 # =========================
 *.DS_Store
 .DS_Store
-
 
 # =========================
 # VS-generated object and
@@ -48,6 +47,14 @@ $RECYCLE.BIN/
 **/debug
 **/release
 **/dist
+
+# =========================
+# Special C# files
+# =========================
+*.g.cs
+*.i.g.cs
+*.cache
+*.suo
 
 # =========================
 # C/C++/SourceSafe files
