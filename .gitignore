@@ -43,10 +43,33 @@ $RECYCLE.BIN/
 # =========================
 # MPLab-X generated files
 # =========================
-**/build
-**/debug
-**/release
-**/dist
+/**/build/
+/**/debug/
+/**/release/
+/**/dist/
+/**/nbproject/private/
+/**/nbproject/Package-*.bash
+/**/nbproject/Makefile-*
+
+
+*.d
+*.pre
+*.p1
+*.lst
+*.sym
+*.o
+*.o.d
+*.sdb
+*.obj
+*.obj.dmp
+*.map
+
+*.elf
+*.hex
+
+
+
+
 
 # =========================
 # Special C# files
@@ -72,10 +95,6 @@ $RECYCLE.BIN/
 *.vspscc
 *.vssscc
 *.dat
-*.elf
-*.hex
-*.o.d
-*.o
 UsrClass.dat
 
 # =========================
