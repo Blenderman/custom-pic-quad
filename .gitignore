@@ -78,3 +78,60 @@ $RECYCLE.BIN/
 *.o
 UsrClass.dat
 
+# =========================
+# Eagle exclusions
+# =========================
+# Backup files
+# =========================
+*.s#?
+*.b#?
+*.l#?
+
+# =========================
+# Eagle project file
+# It contains a serial number
+# and references to the file
+# structure on your computer.
+# comment the following line
+# if you want to have your
+# project file included.
+# =========================
+eagle.epf
+
+# =========================
+# Special files/directories
+# =========================
+/Eagle Projects/**/*.pdf
+/Eagle Projects/**/*.zip
+/Eagle Projects/**/FAB/
+*.pro
+
+
+# =========================
+# CAM files
+# =========================
+*.$$$
+*.cmp
+*.ly2
+*.l15
+*.sol
+*.plc
+*.stc
+*.sts
+*.crc
+*.crs
+*.ger
+*.gvp
+
+*.dri
+*.drl
+*.gpi
+*.pls
+*.xln
+
+*.drd
+*.drd.*
+
+*.info
+
+*.eps
