@@ -1,4 +1,4 @@
-#include "I2C/I2C_Local.h"
+#include "I2C\I2C_Local.h"
 
 //==================================================================
 // Variables shared (across I2C modules) - set in I2CInit
@@ -11,11 +11,11 @@ uint	_I2C_BRG		= 0;	// Calculated BRG value
 //------------------------------------------------------------------
 #ifdef _I2C_UseI2C1
 // Control Block for I2C1 Module
-_I2C_CB		_I2C1_CB;
+_I2C_CB		_I2C_CB1;
 #endif
 //------------------------------------------------------------------
 #ifdef _I2C_UseI2C2
 // Control Block for I2C2 Module
-_I2C_CB		_I2C2_CB;
+_I2C_CB		_I2C_CB2;
 #endif
 //==================================================================

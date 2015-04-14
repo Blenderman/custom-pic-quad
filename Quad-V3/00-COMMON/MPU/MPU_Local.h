@@ -1,8 +1,8 @@
-#include "TMR/TMR.h"
-#include "I2C/I2C.h"
+#include "TMR\TMR.h"
+#include "I2C\I2C.h"
 //--------------------------------------
-#include "MPU/MPU.h"
-#include "MPU/MPU_Profile.h"
+#include "MPU\MPU.h"
+#include "MPU\MPU_Profile.h"
 //==================================================================
 
 //==================================================================

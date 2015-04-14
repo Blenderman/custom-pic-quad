@@ -1,4 +1,4 @@
-#include "I2C/I2C_Local.h"
+#include "I2C\I2C_Local.h"
 
 //============================================================
 // Asynchronous I2C API (visible externally) component
@@ -30,15 +30,14 @@ uint	I2CAsyncStart(uint I2Cx, I2CAsyncRqst* Rqst)
 		//-----------------------------------------------------------
 		// New request...
 		//-----------------------------------------------------------
-		if (pCB->_I2C_CallBack)
+		if (pCB->CallBack)
 			// There is an active request being processed -
 			// several checks need to be implemented...
 			{
 			//------------------------------------------------------------
 			// First, check whether this request already active
 			//---------------------------------------------------------
-			if (	pCB->_I2C_CallBack		== Rqst->CallBack
-				&&	pCB->_I2C_CallBackArg	== Rqst->CallBackArg )
+			if ( pCB->CallBack == Rqst->CallBack )
 				{
 				// Duplicate request...
 				RC = I2CRC_RQSTA;
@@ -47,11 +46,9 @@ uint	I2CAsyncStart(uint I2Cx, I2CAsyncRqst* Rqst)
 			//-------------------------------------------------------
 			// Second, check whether this request already queued
 			//-------------------------------------------------------
-			for (i = 0; i < I2CMaxAsyncRqst; i++)
+			for (i = 0; i < I2CMaxAsyncQueue; i++)
 				{
-				if (	pCB->_I2CRqstQueue[i].CallBack		== Rqst->CallBack
-					 &&
-						pCB->_I2CRqstQueue[i].CallBackArg	== Rqst->CallBackArg )
+				if ( pCB->_I2CRqstQueue[i].CallBack == Rqst->CallBack )
 					{
 					// Request is already in the queue...
 					RC = I2CRC_OK;
@@ -61,13 +58,13 @@ uint	I2CAsyncStart(uint I2Cx, I2CAsyncRqst* Rqst)
 			//-------------------------------------------------------
 			// Third, try to add this request to the queue
 			//-------------------------------------------------------
-			for (i = 0; i < I2CMaxAsyncRqst; i++)
+			for (i = 0; i < I2CMaxAsyncQueue; i++)
 				{
 				if (	NULL == pCB->_I2CRqstQueue[i].CallBack )
 					{
 					// Free slot found! Add request to the queue
-					pCB->_I2CRqstQueue[i].CallBack		= Rqst->CallBack;
-					pCB->_I2CRqstQueue[i].CallBackArg	= Rqst->CallBackArg;
+					pCB->_I2CRqstQueue[i].CallBack    = Rqst->CallBack;
+					pCB->_I2CRqstQueue[i].ClientParam = Rqst->ClientParam;
 					//-------------------------------------------
 					RC = I2CRC_OK;
 					goto Finally;
@@ -82,9 +79,10 @@ uint	I2CAsyncStart(uint I2Cx, I2CAsyncRqst* Rqst)
 			// to innitiate a new Asynchronous request
 			{
 			// Frist, let's check bus condition
-			if (0 == pSTAT->P)
+			if (1 == pCB->_I2C_SBSY || 0 == pSTAT->P)
 				{
-				// Bus is not idle as the last status is not "Stop"
+				// Bus is not idle as it is busy with SYNC
+				// operation or the last status is not "Stop"
 				RC = I2CRC_BUSY;	// // Bus is busy...
 				goto Finally;
 				}
@@ -93,14 +91,13 @@ uint	I2CAsyncStart(uint I2Cx, I2CAsyncRqst* Rqst)
 			// Async operation
 			//---------------------------------------------------------
 			// Store in the I2C Library control block address of the
-			// callback function of the current bus owner and
-			// respective callback parameter.
+			// client's request block.
 			//---------------------------------------------------------
-			pCB->_I2C_CallBack		= Rqst->CallBack;
-			// NOTE: non-NULL value of pCB->_I2C_CallBack field
+			pCB->CallBack    = Rqst->CallBack;
+            pCB->ClientParam = Rqst->ClientParam;
+			// NOTE: non-NULL value of pCB->CallBack field
 			//		 also serves as a FLAG indicating that bus is
 			//		 busy and tested for in I2CGetStatus(...) routine
-			pCB->_I2C_CallBackArg	= Rqst->CallBackArg;
 			//--------------------------------------------------------
 			I2CSetIF(I2Cx, 0); 	// Clear  I2C Master interrupt flag
 			I2CSetIE(I2Cx, 1);	// Enable I2C Master interrupt
@@ -109,7 +106,7 @@ uint	I2CAsyncStart(uint I2Cx, I2CAsyncRqst* Rqst)
 			pCON->SEN = 1;
 			// NOTE: because I2C bus is being allocated to the client,
 			//		 from now until the asynchronous operation completes
-			//		 I2C interrupts will be routed to client's callback
+			//		 I2C interrupts will be routed to client's CallBack
 			//		 routine.
 			RC = I2CRC_OK;
 			goto Finally;

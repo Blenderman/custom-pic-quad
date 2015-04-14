@@ -1,4 +1,4 @@
-#include "I2C/I2C_Local.h"
+#include "I2C\I2C_Local.h"
 
 //************************************************************
 void	I2CInit(uint IL, uint Speed)	
@@ -47,49 +47,53 @@ void	I2CInit(uint IL, uint Speed)
 	// Initialize Control Block for I2C modules
 	//---------------------------------------------------------
 	int i;
-	// <editor-fold defaultstate="collapsed" desc="Initialize _I2C1_CB">
+	// <editor-fold defaultstate="collapsed" desc="Initialize _I2C_CB1">
 	#ifdef _I2C_UseI2C1
 	// Control Block for I2C1 Module
-	_I2C1_CB._I2C_SBSY		= 0;		// Naturally, I2C is not busy :)
-	_I2C1_CB._I2C_CallBack	= NULL;		// No active call-back
+    _I2C_CB1._CB_ID         = 1;
+	_I2C_CB1._I2C_SBSY      = 0;		// Naturally, I2C is not busy :)
+	_I2C_CB1.CallBack       = NULL;		// No active call-back
+    _I2C_CB1.ClientParam	= 0;
 	//---------------------------------------------------------
 	// Initialize I2C subscribers' structure
 	//---------------------------------------------------------
-	for (i = 0; i < I2CMaxAsyncRqst; i++)
+	for (i = 0; i < I2CMaxAsyncQueue; i++)
 	{
-		_I2C1_CB._I2CRqstQueue[i].CallBack		= NULL;
-		_I2C1_CB._I2CRqstQueue[i].CallBackArg	= 0;
+		_I2C_CB1._I2CRqstQueue[i].CallBack		= NULL;
+		_I2C_CB1._I2CRqstQueue[i].ClientParam	= 0;
 	}
 	//---------------------------------------------------------
 	// Initialize references to I2C1 Control Registers
 	//---------------------------------------------------------
-	_I2C1_CB.pI2C_CON		= &I2C1CON;
-	_I2C1_CB.pI2C_STAT		= &I2C1STAT;
-	_I2C1_CB.pI2C_TRN		= &I2C1TRN;
-	_I2C1_CB.pI2C_RCV		= &I2C1RCV;
+	_I2C_CB1.pI2C_CON		= &I2C1CON;
+	_I2C_CB1.pI2C_STAT		= &I2C1STAT;
+	_I2C_CB1.pI2C_TRN		= &I2C1TRN;
+	_I2C_CB1.pI2C_RCV		= &I2C1RCV;
 	#endif
 	// </editor-fold>
 	//---------------------------------------------------------
-	// <editor-fold defaultstate="collapsed" desc="Initialize _I2C2_CB">
+	// <editor-fold defaultstate="collapsed" desc="Initialize _I2C_CB2">
 	#ifdef _I2C_UseI2C2
 	// Control Block for I2C2 Module
-	_I2C2_CB._I2C_SBSY		= 0;		// Naturally, I2C is not busy :)
-	_I2C2_CB._I2C_CallBack	= NULL;		// No active call-back
+    _I2C_CB2._CB_ID         = 2;
+	_I2C_CB2._I2C_SBSY      = 0;		// Naturally, I2C is not busy :)
+	_I2C_CB2.CallBack       = NULL;		// No active call-back
+    _I2C_CB2.ClientParam	= 0;
 	//---------------------------------------------------------
 	// Initialize I2C subscribers' structure
 	//---------------------------------------------------------
-	for (i = 0; i < I2CMaxAsyncRqst; i++)
+	for (i = 0; i < I2CMaxAsyncQueue; i++)
 	{
-		_I2C2_CB._I2CRqstQueue[i].CallBack		= NULL;
-		_I2C2_CB._I2CRqstQueue[i].CallBackArg	= 0;
+		_I2C_CB2._I2CRqstQueue[i].CallBack		= NULL;
+		_I2C_CB2._I2CRqstQueue[i].ClientParam	= 0;
 	}
 	//---------------------------------------------------------
 	// Initialize references to I2C2 Control Registers
 	//---------------------------------------------------------
-	_I2C2_CB.pI2C_CON		= &I2C2CON;
-	_I2C2_CB.pI2C_STAT		= &I2C2STAT;
-	_I2C2_CB.pI2C_TRN		= &I2C2TRN;
-	_I2C2_CB.pI2C_RCV		= &I2C2RCV;
+	_I2C_CB2.pI2C_CON		= &I2C2CON;
+	_I2C_CB2.pI2C_STAT		= &I2C2STAT;
+	_I2C_CB2.pI2C_TRN		= &I2C2TRN;
+	_I2C_CB2.pI2C_RCV		= &I2C2RCV;
 	#endif
 	// </editor-fold>
 	//=========================================================
