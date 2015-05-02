@@ -175,6 +175,36 @@ typedef volatile struct
 //==================================================================
 
 //============================================================
+// General support function for integration with other modules
+//============================================================
+byte	I2CGetIL();
+//============================================================
+// Initialization routine
+//============================================================
+void	I2CInit(uint IL, uint Speed);	
+		// Parameter (1<=IL<=7) defines the
+		// priority of I2Cx interrupt routine.
+		//------------------------------------
+		// Speed:
+		// 0 - baud rate set at 100 kHz,
+		// 1 - baud rate set at 400 kHz,
+		// 2 - baud rate set at   1 MHz
+//============================================================
+// Synchronous I2C API (visible externally) component
+//============================================================
+uint	I2CSyncRead(    uint    I2Cx,
+                        byte    DevAddr,
+                        byte    Register,
+                        byte*   Buffer,
+                        uint    BufLen	);
+//-----------------------------------------------------
+uint	I2CSyncWrite(   uint    I2Cx,
+                        byte    DevAddr,
+                        byte    Register,
+                        byte*   Buffer,
+                        uint    BuffLen );
+
+//============================================================
 // <editor-fold defaultstate="collapsed" desc="I2C Async Subscriber interface">
 //============================================================
 // I2C Subscriber interface
@@ -209,36 +239,6 @@ typedef	struct
 //============================================================
 // </editor-fold>
 //============================================================
-
-//============================================================
-// Initialization routine
-//============================================================
-void	I2CInit(uint IL, uint Speed);	
-		// Parameter (1<=IL<=7) defines the
-		// priority of I2Cx interrupt routine.
-		//------------------------------------
-		// Speed:
-		// 0 - baud rate set at 100 kHz,
-		// 1 - baud rate set at 400 kHz,
-		// 2 - baud rate set at   1 MHz
-//============================================================
-// General support function for integration with other modules
-//============================================================
-byte	I2CGetIL();
-//============================================================
-// Synchronous I2C API (visible externally) component
-//============================================================
-uint	I2CSyncRead(	uint	I2Cx,
-						byte	DevAddr,
-						byte	Register,
-						byte*	Buffer,
-						uint  	BufLen	);
-//-----------------------------------------------------
-uint	I2CSyncWrite(	uint	I2Cx,
-						byte 	DevAddr,
-						byte	Register,
-						byte* 	Buffer,
-						uint  	BuffLen );
 
 //============================================================
 // Asynchronous I2C API (visible externally) component

@@ -1,7 +1,7 @@
 #include "I2C\I2C_Local.h"
 
 // Forward declaration
-void I2C2Interrupt(_I2C_CB * pCB);
+static inline void I2C2Interrupt(_I2C_CB * pCB);  //24621
 
 
 #ifdef _I2C_UseI2C1
@@ -51,7 +51,7 @@ void __attribute__((__interrupt__,__no_auto_psv__)) _MI2C2Interrupt(void)
 //*******************************************************************
 // Common interrupt handler routine
 //-------------------------------------------------------------------
-void I2C2Interrupt(_I2C_CB * pCB)
+static inline void I2C2Interrupt(_I2C_CB * pCB)
     {
 	//---------------------------------------------------------------
 	I2C_CONBITS*	pCON	= I2CpCON(pCB);
@@ -81,74 +81,74 @@ void I2C2Interrupt(_I2C_CB * pCB)
 			if (pCB->_I2CRqstQueue[i].CallBack)
 				{
 				// Promote request from the queue to Active
-				pCB->CallBack    = pCB->_I2CRqstQueue[i].CallBack;
+                pCB->CallBack    = pCB->_I2CRqstQueue[i].CallBack;
                 pCB->ClientParam = pCB->_I2CRqstQueue[i].ClientParam;
-				// Free up queue entry
-				pCB->_I2CRqstQueue[i].CallBack    = NULL;
+                // Free up queue entry
+                pCB->_I2CRqstQueue[i].CallBack    = NULL;
                 pCB->_I2CRqstQueue[i].ClientParam = 0;
-				//---------------------------------------------------
-				// Initiate Start on I2C bus
-				//---------------------------------------------------
-				pCON->SEN = 1;
-				// NOTE: because I2C bus is being allocated to the client,
-				//		 from now until the asynchronous operation completes
-				//		 I2C interrupts (except for STOP and Error condi-
+                //---------------------------------------------------
+                // Initiate Start on I2C bus
+                //---------------------------------------------------
+                pCON->SEN = 1;
+                // NOTE: because I2C bus is being allocated to the client,
+                //		 from now until the asynchronous operation completes
+                //		 I2C interrupts (except for STOP and Error condi-
                 //       tions) will be routed to client's callback
-				//		 routine.
-				//---------------------------------------------------
-				return;
-				}
-			}
-		//-----------------------------------------------------------
-		// Current Asynchronous request completed and there is no
-		// outstanding requests in the queue...
-		//-----------------------------------------------------------
-		I2CSetIE(pCB->_CB_ID, 0);   // Disable I2C Master interrupt
-		//-----------------------------------------------------------
-		return;
-		}
+                //		 routine.
+                //---------------------------------------------------
+                return;
+                }
+            }
+        //-----------------------------------------------------------
+        // Current Asynchronous request completed and there is no
+        // outstanding requests in the queue...
+        //-----------------------------------------------------------
+        I2CSetIE(pCB->_CB_ID, 0);   // Disable I2C Master interrupt
+        //-----------------------------------------------------------
+        return;
+        }
     // </editor-fold>
 	//===============================================================
 
-	//===============================================================
+    //===============================================================
     // <editor-fold defaultstate="collapsed" desc="Check for any ERROR condition on the bus">
-	//===============================================================
-	// Check for any ERROR condition on the bus
-	//---------------------------------------------------------------
-	if 	(
-			pSTAT->ACKSTAT		// 1 = NACK received from slave
-		||	pSTAT->BCL			// 1 = Master Bus Collision
-		||	pSTAT->IWCOL		// 1 = Write Collision
-		||	pSTAT->I2COV		// 1 = READ Overflow condition
-		)
-		{
-		//-----------------------------------------------------------
-		// Error: Terminate current ASYNC session
-		// emulate I2CAsynStop(...)
-		//-----------------------------------------------------------
-		*(pCB->pI2C_STAT) = 0;	// clear STATUS bits
-		pCON->PEN         = 1;	// Initiate Stop on I2C bus
-		//-----------------------------------------------------------
-		return;
-		}
-	//===============================================================
+    //===============================================================
+    // Check for any ERROR condition on the bus
+    //---------------------------------------------------------------
+    if 	(
+            pSTAT->ACKSTAT		// 1 = NACK received from slave
+        ||  pSTAT->BCL			// 1 = Master Bus Collision
+        ||  pSTAT->IWCOL		// 1 = Write Collision
+        ||  pSTAT->I2COV		// 1 = READ Overflow condition
+        )
+        {
+        //-----------------------------------------------------------
+        // Error: Terminate current ASYNC session
+        // emulate I2CAsynStop(...)
+        //-----------------------------------------------------------
+        *(pCB->pI2C_STAT) = 0;	// clear STATUS bits
+        pCON->PEN         = 1;	// Initiate Stop on I2C bus
+        //-----------------------------------------------------------
+        return;
+        }
+    //===============================================================
     // </editor-fold>
-	//===============================================================
-    
-    
-	//===============================================================
-	// Normal I2Cx interrupt with the active subscriber - process
-	// through the State Machine
-	//===============================================================
-	// Invoke callback function
-	(*(pCB->CallBack))(pCB->ClientParam,
-                       pCON,
-                       pSTAT,
-                       pCB->pI2C_TRN,
-                       pCB->pI2C_RCV);
-	//---------------------------------------------------------------
-	return;
-	//===============================================================
+    //===============================================================
+
+
+    //===============================================================
+    // Normal I2Cx interrupt with the active subscriber - process
+    // through the State Machine
+    //===============================================================
+    // Invoke callback function
+    (*(pCB->CallBack))( pCB->ClientParam,
+                        pCON,
+                        pSTAT,
+                        pCB->pI2C_TRN,
+                        pCB->pI2C_RCV);
+    //---------------------------------------------------------------
+    return;
+    //===============================================================
     }
 //*******************************************************************
 

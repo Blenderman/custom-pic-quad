@@ -28,25 +28,25 @@ void	I2CInit(uint IL, uint Speed)
 	//---------------------------------------------------------
 	switch (Speed)
 		{
-		case 3:
-			_I2C_BRG = 56;		// 1MHz
-			break;
-		case 2:
-			_I2C_BRG = 158;		// 400 kHz
-			break;
-		case 1:
-			_I2C_BRG = 300;		// 200 kHz
-			break;
-		case 0:
-		default:
-			_I2C_BRG = 511;		// ~123 kHz - lowest I2C speed
-								// achievable with Fcy = 64 MHz
-			break;
+        case 3:
+            _I2C_BRG = 56;      // 1MHz
+            break;
+        case 2:
+            _I2C_BRG = 158;     // 400 kHz
+            break;
+        case 1:
+            _I2C_BRG = 300;     // 200 kHz
+            break;
+        case 0:
+        default:
+            _I2C_BRG = 511;     // ~123 kHz - lowest I2C speed
+                                // achievable with Fcy = 64 MHz
+            break;
 		}
 	//=========================================================
 	// Initialize Control Block for I2C modules
 	//---------------------------------------------------------
-	int i;
+    int i;
 	// <editor-fold defaultstate="collapsed" desc="Initialize _I2C_CB1">
 	#ifdef _I2C_UseI2C1
 	// Control Block for I2C1 Module

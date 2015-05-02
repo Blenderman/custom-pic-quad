@@ -101,12 +101,14 @@ static inline I2C_STATBITS*	I2CpSTAT(_I2C_CB* pCB)
 //------------------------------------------------------------------
 // I2Cx Helper Functions
 //==================================================================
-static inline uint  I2CGetStatus(   _I2C_CB*        pCB,
-                                    I2C_CONBITS*    pCON,
-                                    I2C_STATBITS*   pSTAT)
+static inline uint  I2CGetStatus(_I2C_CB* pCB)
 	{
 	if (pCB->CallBack)          return I2CRC_ABSY;
 	if (pCB->_I2C_SBSY)         return I2CRC_SBSY;
+        //--------------------------------------------
+        I2C_CONBITS*    pCON    = I2CpCON(pCB);
+        I2C_STATBITS*   pSTAT   = I2CpSTAT(pCB);
+        //--------------------------------------------
 	if	(   pCON->SEN
 		 || pCON->PEN
 		 || pCON->RCEN

@@ -1,5 +1,5 @@
-#include "TMR/TMR.h"
-#include "TMR/TMRProfile.h"
+#include "TMR\TMR.h"
+#include "TMR\TMRProfile.h"
 
 //=====================================================
 #ifndef __TRMLocal_H

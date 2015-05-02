@@ -16,9 +16,6 @@ uint	I2CSyncWrite(	uint	I2Cx,
 	//---------------------------------------------------------
 	_I2C_CB*		pCB;
 	if ( NULL == (pCB = I2CpCB(I2Cx)) )		return I2CRC_NOTA;
-	//---------------------------------------------------------
-	I2C_CONBITS*	pCON	= I2CpCON(pCB);
-	I2C_STATBITS*	pSTAT	= I2CpSTAT(pCB);
 	//=========================================================
 	// Validate run-time conditions
 	//---------------------------------------------------------
@@ -34,7 +31,7 @@ Retry:
 	//------------------------------------
 	SET_AND_SAVE_CPU_IPL(CPU_IPL, _I2C_IL);
 		{
-		if (I2CRC_OK == (RC=I2CGetStatus(pCB, pCON, pSTAT)))
+		if (I2CRC_OK == (RC=I2CGetStatus(pCB)))
 			//---------------------------------------------------------
 			// Set Flag indicating Synchronous operation is in progress
 			//---------------------------------------------------------
