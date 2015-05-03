@@ -6,12 +6,14 @@
 //-------------------------------------------------------------------
 // Initialize MPL3115 Altimeter
 //------------------------------------------------------------------
-// OSR = 3 => Average over 2^3=   8 samples, update rate about 38 Hz
-//            Sample-to-sample dev +/- 3 m
-// OSR = 4 => Average over 2^4=  16 samples, update rate about 20 Hz
-// OSR = 5 => Average over 2^5=  32 samples, update rate about 10 Hz
-// OSR = 6 => Average over 2^6=  64 samples, update rate about  6 Hz
-// OSR = 7 => Average over 2^7= 128 samples, update rate about  3 Hz
+// OSR = 0 => No averaging ( 2^0= 1),   update rate about 166.6 Hz
+// OSR = 1 => Average 2^1=   2 samples, update rate about 111.1 Hz
+// OSR = 2 => Average 2^2=   4 samples, update rate about  67.8 Hz
+// OSR = 3 => Average 2^3=   8 samples, update rate about  37.7 Hz
+// OSR = 4 => Average 2^4=  16 samples, update rate about  20.1 Hz
+// OSR = 5 => Average 2^5=  32 samples, update rate about  10.4 Hz
+// OSR = 6 => Average 2^6=  64 samples, update rate about   5.3 Hz
+// OSR = 7 => Average 2^7= 128 samples, update rate about   2.7 Hz
 //------------------------------------------------------------------
 
 //==================================================================
@@ -29,8 +31,8 @@ uint    MPLInit(byte OSR)
     //---------------------------------------------------------
     if (_MPL_Init)
         return    MPL_OK;        // Avoid repeated initialization...
-    _MPL_Init    = 1;
     //---------------------------------------------------------
+    _MPL_Init  = 1;
     _MPL_IL    = IL;
     //************************************************
 
@@ -44,42 +46,23 @@ uint    MPLInit(byte OSR)
     //---------------------------------------------------------
     // Configure Interrupts
     //---------------------------------------------------------
-    MPL_IE        = 0;            // Disable INTx interrupt
-    MPL_IF        = 0;             // Clear INTx interrupt flag
-    MPL_EP        = 0;            // Interrupt on POSITIVE edge
-    MPL_IP        = _MPL_IL;        // Set INTx interrupt priority
+    MPL_IE        = 0;         // Disable INTx interrupt
+    MPL_IF        = 0;         // Clear INTx interrupt flag
+    MPL_EP        = 0;         // Interrupt on POSITIVE edge
+    MPL_IP        = _MPL_IL;   // Set INTx interrupt priority
     //---------------------------------------------------------
     // Map MCU pins used by INTx module through
     // REMAPPABLE PIN SELECT feature.
     //---------------------------------------------------------
     _MPLInitPinMap ();
-
     //---------------------------------------------------------
     // INTx interrupt enabled in MPLAsyncStart() routine
     //---------------------------------------------------------
 
-    //************************************************
-    // Validate OSR - acceptable values are from 0
-    // for no oversampling to 7 for 2^7=128 over-
-    // sampling ratio
-    //************************************************
-    if (OSR > 7) OSR = 7;
-    //*********************************************************
-    // Before we innitiate RESET we need to calculate value of
-    // MAX interval between consequitive data samples based on
-    // the new OSR value
-    //*********************************************************
-    _MPL_MaxInt = (ulong)((powf(2.0, (float)(OSR))*0.004 + 0.003)
-                / TMRGetTSRate());
-
     //---------------------------------------------------------
     // Now we should initialize the sensor...
     //---------------------------------------------------------
-    uint    RC    = MPL_OK;
-    //---------------------------------------------------------
-    RC = MPLReset (OSR);
-    //---------------------------------------------------------
-    return RC;
+    return MPLReset (OSR);
     }
 // </editor-fold>
 //==================================================================
@@ -101,12 +84,20 @@ uint    MPLReset(byte OSR)
         if (MPL_OK != (RC = MPLAsyncStop()))
             return RC;    // Failure... Not likely :)
         }
+    
     //************************************************
     // Validate OSR - acceptable values are from 0
     // for no oversampling to 7 for 2^7=128 over-
     // sampling ratio
     //************************************************
     if (OSR > 7) OSR = 7;
+    //*********************************************************
+    // Before we innitiate RESET we need to calculate value of
+    // MAX interval between consequitive data samples based on
+    // the new OSR value
+    //*********************************************************
+    _MPL_MaxInt = (ulong)( (powf(2.0, (float)OSR)*0.004 + 0.003)
+                / TMRGetTSRate());
 
     //*********************************************************
     byte        CtrlR1;
