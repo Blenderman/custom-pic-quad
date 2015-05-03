@@ -20,9 +20,11 @@
 typedef    struct
     {
     ulong    TS;        // Timestamp of the cycle
-    //-----------------------------------------------
-    // Relative (to Ground) altitude (in meters)
-    //-----------------------------------------------
+    //------------------------------------------------
+    // Absolute or Relative (to Ground if ground level
+    // established through the call to MPLSetGround())
+    // altitude (in meters)
+    //------------------------------------------------
     float    Alt;
     }    MPLData;
 

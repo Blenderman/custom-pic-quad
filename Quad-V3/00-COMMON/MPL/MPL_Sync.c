@@ -74,22 +74,23 @@ uint    _MPLWrite(byte  Register,
 //-------------------------------------------------------------
 uint    _MPLReadRawData(long* pAlt)
     {
-    if (!_MPL_Init)
-      return MPL_NOTINIT;        // Not initialized...
-    //-----------------------
     byte    CtrlR1    = 0;
     int     RC        = MPL_OK;
+    byte    Data[6];
 
     // If Interrupt Port is high, this is an
     // indication that the new sample is ready
     // and we do not need to check STATUS register
     while (0 == MPL_INT_PORT);
 
-    //-----------------------------------------
-    // MPL has a measurement!
-    //-----------------------------------------
-    byte    Data[6];
-    // Read measurement
+    //----------------------------------------------
+    // MPL has new measurement - read the STATUS
+    // register (at 0x00), three bytes of altitude
+    // (addresses from 0x01 to 0x03) and two bytes
+    // of temperature data (at 0x04 and 0x05).
+    // Temperature data is ignored, but had to be
+    // read to reset the READY line
+    //----------------------------------------------
     if ( MPL_OK != (RC = _MPLRead(0x0, Data, sizeof(Data)) ) )
         return RC;   // Error...
     //===============================================
