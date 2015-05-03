@@ -78,7 +78,7 @@ uint    _MPLReadRawData(long* pAlt)
       return MPL_NOTINIT;        // Not initialized...
     //-----------------------
     byte    CtrlR1    = 0;
-    int     RC        = 0;
+    int     RC        = MPL_OK;
 
     // If Interrupt Port is high, this is an
     // indication that the new sample is ready
@@ -90,25 +90,28 @@ uint    _MPLReadRawData(long* pAlt)
     //-----------------------------------------
     byte    Data[6];
     // Read measurement
-    if ( (RC = _MPLRead(0x0, Data, sizeof(Data)) ) )
-        return RC;                            // Error...
+    if ( MPL_OK != (RC = _MPLRead(0x0, Data, sizeof(Data)) ) )
+        return RC;   // Error...
     //===============================================
     // Just to be sure, check STATUS
     //-----------------------------------------------
-    if ( (Data[0] & 0x04) != 0x04 )
+    if ( (Data[0] & 0x04) == 0x04 )
         {
-        (*pAlt) = -5;
-        goto StartOST;
+        // PDR bit is set - we have a new sample; should
+        // not come as surprise as we have been checking
+        // MPL_INT_PORT, which, with interrupt line
+        // configured in MPLReset(...), matches the
+        // READY status.
+        //===============================================
+        // Construct 20-bit ALT sample as integer
+        //-----------------------------------------------
+        (*pAlt) = *((sbyte*)&Data[1]);
+        (*pAlt) = (*pAlt) << 8;
+        (*pAlt) = (*pAlt) |  Data[2];
+        (*pAlt) = (*pAlt) << 8;
+        (*pAlt) = (*pAlt) |  Data[3];
+        (*pAlt) = (*pAlt) >> 4;
         }
-    //===============================================
-    // Construct 20-bit ALT sample as integer
-    //-----------------------------------------------
-    (*pAlt) = *((sbyte*)&Data[1]);
-    (*pAlt) = (*pAlt) << 8;
-    (*pAlt) = (*pAlt) |  Data[2];
-    (*pAlt) = (*pAlt) << 8;
-    (*pAlt) = (*pAlt) |  Data[3];
-    (*pAlt) = (*pAlt) >> 4;
 
     //---------------------------------------------------------
     // Due to the rather slow AUTO acquisition rate of MPL3115
@@ -118,18 +121,16 @@ uint    _MPLReadRawData(long* pAlt)
     // Prior to setting OST the sensor requires that this bit
     // is read, which is addressed by our implementation logic.
     //---------------------------------------------------------
-StartOST:
-    //---------------------------------------------------------
     // Read CtrlR1 to obtain OST bit
     //---------------------------------------------------------
-    RC = _MPLRead(CtrlR1Addr, &CtrlR1, 1);
-    if (RC) return RC;    // Failure...
+    if (MPL_OK != (RC = _MPLRead(CtrlR1Addr, &CtrlR1, 1)))
+        return RC;    // Failure...
     //------------------------------------
     // Set OST bit and write CtrlR1
     //------------------------------------
     CtrlR1 |= CtrlR1SetOST;
-    RC = _MPLWrite(CtrlR1Addr, &CtrlR1, 1);
-    if (RC) return RC;    // Failure...
+    if (MPL_OK != (RC = _MPLWrite(CtrlR1Addr, &CtrlR1, 1)))
+        return RC;    // Failure...
     //---------------------------------------------------------
     return    MPL_OK;
     }
