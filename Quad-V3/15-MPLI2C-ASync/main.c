@@ -1,12 +1,12 @@
 #include "System.h"
 //---------------------------------
-#include "Init/Init.h"
-#include "Init/Switches.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "SDL/SDL.h"
+#include "Init\Init.h"
+#include "Init\Switches.h"
+#include "TMR\TMR.h"
+#include "BLI\BLI.h"
+#include "SDL\SDL.h"
 //---------------------------------
-#include "MPL/MPL.h"
+#include "MPL\MPL.h"
 
 int main(void)
 	{
@@ -28,64 +28,27 @@ int main(void)
 		SDLInit(3, BAUD_115200);
 	//*******************************************************************
 	I2CInit(5, 3);
-	//-------------------------------------------------------------------
-	// Initialize MPL3115 Altimeter
-	//------------------------------------------------------------------
-	// OSR = 3 => Average over 2^3=  8 samples, update rate about 38 Hz
-	//			  Sample-to-sample dev +/- 3 m
-	// OSR = 4 => Average over 2^4= 16 samples, update rate about 20 Hz
-	// OSR = 5 => Average over 2^5= 32 samples, update rate about 10 Hz
-	// OSR = 6 => Average over 2^6= 64 samples, update rate about  6 Hz
-	// OSR = 7 => Average over 2^7=128 samples, update rate about  3 Hz
-	//------------------------------------------------------------------
+    //-------------------------------------------------------------------
+    // Initialize MPL3115 Altimeter
+    //------------------------------------------------------------------
+    // OSR = 0 => No averaging ( 2^0= 1),   update rate about 166.6 Hz
+    // OSR = 1 => Average 2^1=   2 samples, update rate about 111.1 Hz
+    // OSR = 2 => Average 2^2=   4 samples, update rate about  67.8 Hz
+    // OSR = 3 => Average 2^3=   8 samples, update rate about  37.7 Hz
+    // OSR = 4 => Average 2^4=  16 samples, update rate about  20.1 Hz
+    // OSR = 5 => Average 2^5=  32 samples, update rate about  10.4 Hz
+    // OSR = 6 => Average 2^6=  64 samples, update rate about   5.3 Hz
+    // OSR = 7 => Average 2^7= 128 samples, update rate about   2.7 Hz
+    //------------------------------------------------------------------
 	byte	OSR	= 3;
 	//------------------------------------------------------------------
-	if ( MPLInit (OSR) )
+	if ( MPL_OK != MPLInit (OSR) )
 		BLIDeadStop ("EB", 2);
 	//*******************************************************************
 	BLISignalOFF();
 	//==================================================================
-	uint RC = 0;
-	byte Data;
-	//-----------------------------------------------------
-	RC = MPLGetSTAT(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetID(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetMODE(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetINTSrc(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetCTRL1(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetCTRL2(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetCTRL3(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetCTRL4(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-	RC = MPLGetCTRL5(&Data);
-	RC = 0;
-	//-----------------------------------------------------
-
-	//==================================================================
 	MPLData		MPLSample;
-	//-----------------------------------------------
-//	while (TRUE)
-//		{
-//		MPLReadSample(&MPLSample);
-//		SDLPostIfReady(	(byte*) &MPLSample, sizeof(MPLSample));
-//		BLISignalFlip();
-//		}
-
+	//==================================================================
 
 	//==================================================================
 	// Start MPL3115 Altimeter in Asynchronous mode
