@@ -55,13 +55,16 @@ int main(void)
 	//*******************************************************************
 	BLISignalOFF();
 	//==================================================================
-	MPLData		MPLSample;
-	//==================================================================
-
-	//==================================================================
 	// Start MPL3115 Altimeter in Asynchronous mode
 	//--------------------------------------------------------------
 	MPLAsyncStart();	// Start as soon as possible for warm-up
+	//==================================================================
+    struct
+        {
+        byte      OSR;
+        byte      Avg;
+        MPLData   MPLSample;
+        } Msg;
 	//==================================================================
 	// Calibrate ground level for MPL3115 Altimeter
 	//--------------------------------------------------------------
@@ -73,10 +76,10 @@ int main(void)
 	//-----------------------------------------------
 	while (TRUE)
 		{
-		if (MPL_OK != MPLAsyncReadWhenReady(&MPLSample))
+		if (MPL_OK != MPLAsyncReadWhenReady(&Msg.MPLSample))
 			BLIDeadStop("SOS", 3);
 		//-----------------------------------------------------
-		SDLPostIfReady(	(byte*) &MPLSample, sizeof(MPLSample));
+		SDLPostIfReady(	(byte*) &Msg, sizeof(Msg));
 		//-----------------------------------------------------
 		BLISignalFlip();
 		}
