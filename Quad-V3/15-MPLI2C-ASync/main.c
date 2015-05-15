@@ -27,7 +27,15 @@ int main(void)
 		// wireless communication at 115.2 KBaud
 		SDLInit(3, BAUD_115200);
 	//*******************************************************************
-	I2CInit(5, 3);
+    // Parameter (1<=IL<=7) defines the
+    // priority of I2Cx interrupt routine.
+    //------------------------------------
+    // Speed:
+    // 0 - baud rate set at 123 kHz,
+    // 1 - baud rate set at 200 kHz,
+    // 2 - baud rate set at 400 KHz
+    // 3 - baud rate set at   1 MHz
+	I2CInit(5, 2);
     //-------------------------------------------------------------------
     // Initialize MPL3115 Altimeter
     //------------------------------------------------------------------
