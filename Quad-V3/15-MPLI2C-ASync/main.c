@@ -9,24 +9,26 @@
 #include "MPL\MPL.h"
 
 int main(void)
-	{
+    {
 
-	//*******************************************************************
-	Init();
-	TMRInit(2);		// Initialize Timer interface with Priority=2
-	BLIInit();		// Initialize Signal interface
-	//*******************************************************************
-	// Switch 1 controls the Serial Data Logger (SDL) communication speed
-	//-------------------------------------------------------------------
-	if (_SW1)
-		// Switch 1 is ON - Configuring SDL for PIC-to-PIC
-		// high-speed communication at 1 MBaud
-		SDLInit(3, BAUD_1M);
-	else
-		// Switch 1 is OFF - Configuring SDL for ZigBEE
-		// wireless communication at 115.2 KBaud
-		SDLInit(3, BAUD_115200);
-	//*******************************************************************
+    //*******************************************************************
+    Init();
+    TMRInit(2);        // Initialize Timer interface with Priority=2
+    BLIInit();        // Initialize Signal interface
+    //*******************************************************************
+    // Switch 1 controls the Serial Data Logger (SDL) communication speed
+    //-------------------------------------------------------------------
+    if (_SW1)
+        // Switch 1 is ON - Configuring SDL for PIC-to-PIC
+        // high-speed communication at 1 MBaud
+        SDLInit(3, BAUD_1M);
+    else
+        // Switch 1 is OFF - Configuring SDL for ZigBEE
+        // wireless communication at 115.2 KBaud
+        SDLInit(3, BAUD_115200);
+    //*******************************************************************
+    // Initialize I2C Library
+    //-------------------------------------------------------------------
     // Parameter (1<=IL<=7) defines the
     // priority of I2Cx interrupt routine.
     //------------------------------------
@@ -35,7 +37,7 @@ int main(void)
     // 1 - baud rate set at 200 kHz,
     // 2 - baud rate set at 400 KHz
     // 3 - baud rate set at   1 MHz
-	I2CInit(5, 2);
+    I2CInit(5, 2);
     //-------------------------------------------------------------------
     // Initialize MPL3115 Altimeter
     //------------------------------------------------------------------
@@ -48,42 +50,42 @@ int main(void)
     // OSR = 6 => Average 2^6=  64 samples, update rate about   5.3 Hz
     // OSR = 7 => Average 2^7= 128 samples, update rate about   2.7 Hz
     //------------------------------------------------------------------
-	byte	OSR	= 3;
-	//------------------------------------------------------------------
-	if ( MPL_OK != MPLInit (OSR) )
-		BLIDeadStop ("EB", 2);
-	//*******************************************************************
-	BLISignalOFF();
-	//==================================================================
-	// Start MPL3115 Altimeter in Asynchronous mode
-	//--------------------------------------------------------------
-	MPLAsyncStart();	// Start as soon as possible for warm-up
-	//==================================================================
+    byte    OSR    = 3;
+    //------------------------------------------------------------------
+    if ( MPL_OK != MPLInit (OSR) )
+        BLIDeadStop ("EB", 2);
+    //*******************************************************************
+    BLISignalOFF();
+    //==================================================================
+    // Start MPL3115 Altimeter in Asynchronous mode
+    //--------------------------------------------------------------
+    MPLAsyncStart();    // Start as soon as possible for warm-up
+    //==================================================================
     struct
         {
         byte      OSR;
         byte      Avg;
         MPLData   MPLSample;
         } Msg;
-	//==================================================================
-	// Calibrate ground level for MPL3115 Altimeter
-	//--------------------------------------------------------------
-	if (MPLSetGround() != MPL_OK) 
-		// Altimeter calibration failed
-		BLIDeadStop("CB", 2);	// Failure...
-	//==================================================================
-	// Altitude from Barometric sensor
-	//-----------------------------------------------
-	while (TRUE)
-		{
-		if (MPL_OK != MPLAsyncReadWhenReady(&Msg.MPLSample))
-			BLIDeadStop("SOS", 3);
-		//-----------------------------------------------------
-		SDLPostIfReady(	(byte*) &Msg, sizeof(Msg));
-		//-----------------------------------------------------
-		BLISignalFlip();
-		}
-	//*******************************************************************
-	return 0;
-	}
+    //==================================================================
+    // Calibrate ground level for MPL3115 Altimeter
+    //--------------------------------------------------------------
+    if (MPLSetGround() != MPL_OK) 
+        // Altimeter calibration failed
+        BLIDeadStop("CB", 2);    // Failure...
+    //==================================================================
+    // Altitude from Barometric sensor
+    //-----------------------------------------------
+    while (TRUE)
+        {
+        if (MPL_OK != MPLAsyncReadWhenReady(&Msg.MPLSample))
+            BLIDeadStop("SOS", 3);
+        //-----------------------------------------------------
+        SDLPostIfReady(    (byte*) &Msg, sizeof(Msg));
+        //-----------------------------------------------------
+        BLISignalFlip();
+        }
+    //*******************************************************************
+    return 0;
+    }
 

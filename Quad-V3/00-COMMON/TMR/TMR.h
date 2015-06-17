@@ -30,45 +30,45 @@
 //****************************************************
 
 
-void			TMRInitDefault();	
-void			TMRInit(uint IL);
+void            TMRInitDefault();    
+void            TMRInit(uint IL);
 
 //----------------------------------------------------
 // In this application we measure time to the precision
 // of 1 usec, thus to convert "ticks" into seconds we
 // use the following rate: 0.000001
 //----------------------------------------------------
-#define	TMRGetTSRate() 0.000001
+#define    TMRGetTSRate() 0.000001
 //----------------------------------------------------
 // Get current time stamp with 1 usec resolution
 //----------------------------------------------------
-ulong	TMRGetTS();
+ulong    TMRGetTS();
 
 
 //************************************************************
 // Blocks execution for "Delay" milliseconds
 //************************************************************
-void	TMRDelay(ulong Delay);
+void    TMRDelay(ulong Delay);
 //************************************************************
 // Blocks for "Delay" ticks (1 tick = 125 usec)
 //************************************************************
-void	TMRDelayTicks(ulong Delay);
+void    TMRDelayTicks(ulong Delay);
 //************************************************************
 // Sets "alarm" time "AlarmDelay" milliseconds in the future
 //************************************************************
-ulong	TMRSetAlarm(ulong AlarmDelay);
+ulong    TMRSetAlarm(ulong AlarmDelay);
 //************************************************************
 // Sets "alarm" time "AlarmTicks" ticks in the future
 //************************************************************
-ulong	TMRSetAlarmTicks(ulong AlarmTicks);
+ulong    TMRSetAlarmTicks(ulong AlarmTicks);
 //************************************************************
 // Checks "alarm" time and return TRUE if alarm still active
 //************************************************************
-BOOL	TMRCheckAlarm(ulong AlarmTime);
+BOOL    TMRCheckAlarm(ulong AlarmTime);
 //************************************************************
 // Blocks execution until the previously set "alarm" time expires
 //************************************************************
-void	TMRWaitAlarm(ulong AlarmTime);
+void    TMRWaitAlarm(ulong AlarmTime);
 
 
 //----------------------------------------------------
@@ -83,12 +83,12 @@ void	TMRWaitAlarm(ulong AlarmTime);
 // subsequent request overrides any existing request.
 //----------------------------------------------------
 // Callback function prototype.
-typedef	void (*TMRCallBack)(void);
+typedef    void (*TMRCallBack)(void);
 //----------------------------------------------------
 // Execute callback "OffsetMS" milliseconds from now:
-void	TMRCallBackAfter(ulong OffsetMS, TMRCallBack callBack);
+void    TMRCallBackAfter(ulong OffsetMS, TMRCallBack callBack);
 // Discard existing callback request:
-void	TMRCallBackDiscard();
+void    TMRCallBackDiscard();
 
 //=====================================================
 #endif

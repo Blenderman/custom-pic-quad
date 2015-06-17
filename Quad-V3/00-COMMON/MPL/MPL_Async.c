@@ -17,12 +17,12 @@ uint        MPLAsyncStart()
     //=========================================================
     _MPL_Ready    = 0;          // Discard async sample, if any
     //---------------------------------------------------------
-    // Set flag indicating that Asyn mode enabled
+    // Set flag indicating that Async mode enabled
     //---------------------------------------------------------
     _MPL_Async    = 1;
     //---------------------------------------------------------
     MPL_IF        = 0;            // Clear the interrupt flag
-    MPL_IE        = 1;            // Enable MPL interrupr
+    MPL_IE        = 1;            // Enable MPL interrupt
     //---------------------------------------------------------
     // Let's set the "last read timestamp" to the current time
     // so that Async read routines may trigger interrupt if

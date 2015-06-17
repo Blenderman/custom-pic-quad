@@ -39,7 +39,7 @@ uint    MPLInit(byte OSR)
     //************************************************
     // MPL group of functions depend on timer providing
     // timestamps for interval measurement, thus we
-    // make sure that timer is intitialized.
+    // make sure that timer is initialized.
     //************************************************
     TMRInitDefault ();
 
@@ -92,8 +92,8 @@ uint    MPLReset(byte OSR)
     //************************************************
     if (OSR > 7) OSR = 7;
     //*********************************************************
-    // Before we innitiate RESET we need to calculate value of
-    // MAX interval between consequitive data samples based on
+    // Before we initiate RESET we need to calculate value of
+    // MAX interval between consecutive data samples based on
     // the new OSR value
     //*********************************************************
     _MPL_MaxInt = (ulong)( (powf(2.0, (float)OSR)*0.004 + 0.003)
@@ -126,7 +126,7 @@ uint    MPLReset(byte OSR)
     // NOTE: RESET also disables FIFO
     //---------------------------------------------------------
     CtrlR1 = 0x04;        // Set RESET bit
-    // Innitiate RESET
+    // Initiate RESET
     // NOTE: REST also resets I2C bus, so we expect NACK
     RC    = _MPLWrite(CtrlR1Addr, &CtrlR1, 1);
     if (RC != I2CRC_NACK) return RC;    // Failure...
@@ -214,7 +214,7 @@ uint    MPLSetGround()
     // Reset Base offset
     _MPL_BaseAlt    = 0.0;
     //---------------------------------------------------------
-    // To collect average for Ground altitudewe would like to
+    // To collect average for Ground altitude we would like to
     // sample MPL for 1 seconds
     //---------------------------------------------------------
     ulong   Alarm = TMRSetAlarm(1000);  // Set Alarm time 1 sec
@@ -262,8 +262,8 @@ uint    MPLAdjustGround(float Altitude, float Target)
     //=========================================================
     // Gradually adjust Ground offset...
     //---------------------------------------------------------
-    // "Weigt" should be some prime number different from
-    // parameter "smooting weight" in Altimeter module
+    // "Weight" should be some prime number different from
+    // parameter "smoothing weight" in Altimeter module
     //---------------------------------------------------------
     // 131 - expect slow changes
     // 179 - even slower (for OSR = 3)

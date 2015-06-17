@@ -21,15 +21,15 @@ void __attribute__((interrupt, no_auto_psv)) MPL_Interrupt(void)
     //------------------------------------------------------------------
     I2CAsyncRqst    MPLRqst = {&_MPLCallBack, NULL};
     //------------------------------------------------------------
-    // Try to innitiate I2C ASYNC processing for MPL
+    // Try to initiate I2C ASYNC processing for MPL
     //------------------------------------------------------------
     if (    I2CRC_OK == I2CAsyncStart(MPL_I2Cx, &MPLRqst)    )
         {
         //////////////////////////////////////////////////////////////
-        // Bus acqusition in ASYNC mode is successful!
+        // Bus acquisition in ASYNC mode is successful!
         //////////////////////////////////////////////////////////////
         _MPL_State        = 0;    // Zero out State Machine
-        // NOTE: because of successful bus acqusition I2C interrupts
+        // NOTE: because of successful bus acquisition I2C interrupts
         //       will be routed to _MPLCallBack routine
         }
     }

@@ -4,28 +4,28 @@
 //=====================================================
 #ifndef __ADCLocal_H
 #define __ADCLocal_H
-	
+    
 //=====================================================
 extern uint                 _ADCIL;
 //-----------------------------------------------------
-extern ulong	volatile    _ADCValue;
+extern ulong    volatile    _ADCValue;
 //-----------------------------------------------------
-extern ulong	volatile    _ADCBuffer;
-extern uint	volatile    _ADCSCnt;
+extern ulong    volatile    _ADCBuffer;
+extern uint    volatile    _ADCSCnt;
 //=====================================================
-//	Run Variables - set in ADCInit(...)
+//    Run Variables - set in ADCInit(...)
 //-----------------------------------------------------
 extern uint                 _ADCCellCnt;
 extern uint                 _ADCBatMinV;
 extern uint                 _ADCBatRange;
 extern float                _ADCBatNomV;
 //-----------------------------------------------------
-//	Constants
+//    Constants
 //-----------------------------------------------------
-extern uint	const       _ADCMinV;
-extern uint	const       _ADCRange;
+extern uint    const       _ADCMinV;
+extern uint    const       _ADCRange;
 //-----------------------------------------------------
-extern float 	const       _ADCVRate;
+extern float     const       _ADCVRate;
 //=====================================================
 
 #endif

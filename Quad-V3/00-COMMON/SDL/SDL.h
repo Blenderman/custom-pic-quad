@@ -24,38 +24,38 @@
 // (Fcy = 64,000,000)
 //=========================================================
 typedef enum
-	{
-	//-----------------------
-	// Standard Baud rates
-	//-----------------------
-	BAUD_2400,
-	BAUD_4800,
-	BAUD_7200,
-	BAUD_9600,
-	BAUD_14400,
-	BAUD_19200,
-	BAUD_38400,
-	BAUD_57600,
-	BAUD_115200,
-	//-----------------------
-	// PIC-to-PIC Baud rates
-	//-----------------------
-	BAUD_200K,
-	BAUD_250K,
-	BAUD_400K,
-	BAUD_500K,
-	BAUD_1M
-	}	SDL_BAUD_RATE;
+    {
+    //-----------------------
+    // Standard Baud rates
+    //-----------------------
+    BAUD_2400,
+    BAUD_4800,
+    BAUD_7200,
+    BAUD_9600,
+    BAUD_14400,
+    BAUD_19200,
+    BAUD_38400,
+    BAUD_57600,
+    BAUD_115200,
+    //-----------------------
+    // PIC-to-PIC Baud rates
+    //-----------------------
+    BAUD_200K,
+    BAUD_250K,
+    BAUD_400K,
+    BAUD_500K,
+    BAUD_1M
+    }    SDL_BAUD_RATE;
 //=======================================================
-void	SDLInit(uint IL, SDL_BAUD_RATE BaudRate);
-			// Parameter (1<=IL<=7) defines the
-			// priority of UART interrupt routine.
+void    SDLInit(uint IL, SDL_BAUD_RATE BaudRate);
+            // Parameter (1<=IL<=7) defines the
+            // priority of UART interrupt routine.
 
-void	SDLPostIfReady(	byte* Data, 
-							uint 	DataLen);
+void    SDLPostIfReady(    byte* Data, 
+                            uint     DataLen);
 
-void	SDLPostWhenReady(	byte * Data, 
-							uint 	DataLen);
+void    SDLPostWhenReady(    byte * Data, 
+                            uint     DataLen);
 //=======================================================
 #endif
 

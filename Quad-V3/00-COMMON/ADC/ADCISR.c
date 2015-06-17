@@ -3,53 +3,53 @@
 
 //************************************************************
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
-	{
-	//---------------------------------------------------
-	// To avoid buffer overrun, stop ADC
-	//---------------------------------------------------
-	ADC_ON		= 0;
-	//---------------------------------------------------
-	// Retrieve sample
-	//---------------------------------------------------
-	_ADCBuffer	+= ADCBUF;		// Add current sample to buffer
-	_ADCSCnt++;					// Increment sample count in
-								// buffer
-	//---------------------------------------------------
-	if (_ADCSCnt >= 128)		// 128 samples in buffer
-		{
-		//----------------------------------------------
-		// Calculate new value as average of accumulated
-		// samples.
-		//----------------------------------------------
-		ulong	NewValue = (_ADCBuffer + 64) >> 7;
-		//----------------------------------------------
-		// Given the configured ADC rate of 10 KHz, the
-		// first update to ADCValue takes 12.8 msec with
-		// every subsequent update taking 6.4 msec
-		//----------------------------------------------
-		if (0 == _ADCValue)
-			{
-			// First ADC sample - take "as-is"
-			//------------------------------------------------
-			// Add 64 and divide by 128 - average with rounding
-			_ADCValue 	= NewValue;
-			}
-		else
-			{
-			// Subsequent samples - apply IIR filtering:
-			// FilteredValue = (15*FilteredValue + NewValue)/16
-			//------------------------------------------------
-			_ADCValue	= (_ADCValue * 15 + NewValue) >> 4;
-			}
-		//--------------------------------------------------------
-		_ADCSCnt	= 64;		// Half of the series consumed
-								// Buffer halved (with rounding)
-		_ADCBuffer	= (_ADCBuffer + 1) >> 1;
-		}
-	//---------------------------------------------------
-	ADC_IF 		= 0 ; 		// Clear ADC interrupt flag
-	ADC_ON		= 1;		// Re-start ADC
-	}
+    {
+    //---------------------------------------------------
+    // To avoid buffer overrun, stop ADC
+    //---------------------------------------------------
+    ADC_ON        = 0;
+    //---------------------------------------------------
+    // Retrieve sample
+    //---------------------------------------------------
+    _ADCBuffer    += ADCBUF;        // Add current sample to buffer
+    _ADCSCnt++;                    // Increment sample count in
+                                // buffer
+    //---------------------------------------------------
+    if (_ADCSCnt >= 128)        // 128 samples in buffer
+        {
+        //----------------------------------------------
+        // Calculate new value as average of accumulated
+        // samples.
+        //----------------------------------------------
+        ulong    NewValue = (_ADCBuffer + 64) >> 7;
+        //----------------------------------------------
+        // Given the configured ADC rate of 10 KHz, the
+        // first update to ADCValue takes 12.8 msec with
+        // every subsequent update taking 6.4 msec
+        //----------------------------------------------
+        if (0 == _ADCValue)
+            {
+            // First ADC sample - take "as-is"
+            //------------------------------------------------
+            // Add 64 and divide by 128 - average with rounding
+            _ADCValue     = NewValue;
+            }
+        else
+            {
+            // Subsequent samples - apply IIR filtering:
+            // FilteredValue = (15*FilteredValue + NewValue)/16
+            //------------------------------------------------
+            _ADCValue    = (_ADCValue * 15 + NewValue) >> 4;
+            }
+        //--------------------------------------------------------
+        _ADCSCnt    = 64;        // Half of the series consumed
+                                // Buffer halved (with rounding)
+        _ADCBuffer    = (_ADCBuffer + 1) >> 1;
+        }
+    //---------------------------------------------------
+    ADC_IF         = 0 ;         // Clear ADC interrupt flag
+    ADC_ON        = 1;        // Re-start ADC
+    }
 //************************************************************
 
 

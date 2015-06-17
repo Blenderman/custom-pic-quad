@@ -1,5 +1,5 @@
 #ifndef __ADCPROFILE_H
-#define	__ADCPROFILE_H
+#define    __ADCPROFILE_H
 //=========================================================================
 // On the Quad-V3 boardBattery voltage divider is connected to pin
 // AN13/RP9I)45/RB13.
@@ -66,5 +66,5 @@
 #define ADC_IE          IEC0bits.AD1IE
 #define ADC_IP          IPC3bits.AD1IP
 
-#endif	/* __ADCPROFILE_H */
+#endif    /* __ADCPROFILE_H */
 

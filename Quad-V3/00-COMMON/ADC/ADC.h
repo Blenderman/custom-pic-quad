@@ -9,18 +9,18 @@
 // ADC subroutines in this program use AN1
 //=====================================================
 
-void	ADCInit(uint IL);   // Parameter (1<=IL<=7) defines the
+void    ADCInit(uint IL);   // Parameter (1<=IL<=7) defines the
                             // priority of ADC interrupt routine.
 //-----------------------------------------------------
 
-uint inline	ADCGetRawSample();
+uint inline    ADCGetRawSample();
 
 // Charge level in %
-float inline	ADCGetBatteryStatus();
+float inline    ADCGetBatteryStatus();
 // Battery current voltage
-float inline	ADCGetBatteryVoltage();
+float inline    ADCGetBatteryVoltage();
 // Battery nominal max voltage
-float inline	ADCGetBatteryNomVoltage();
+float inline    ADCGetBatteryNomVoltage();
 
 //=====================================================
 #endif
