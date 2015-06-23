@@ -6,16 +6,15 @@
 #include "BLI\BLI.h"
 #include "SDL\SDL.h"
 //---------------------------------
-#include "MPU\MPU.h"    // MPU-6050 - gyroscope/accelerometer
-#include "MPL\MPL.h"    // MPL-3115A2 - barometric altimeter
+#include "ADC\ADC.h"    
 
 int main(void)
     {
 
     //*******************************************************************
     Init();
-    TMRInit(2);        // Initialize Timer interface with Priority=2
-    BLIInit();        // Initialize Signal interface
+    TMRInit(2);     // Initialize Timer interface with Priority=2
+    BLIInit();      // Initialize Signal interface
     //*******************************************************************
     // Switch 1 controls the Serial Data Logger (SDL) communication speed
     //-------------------------------------------------------------------
@@ -34,27 +33,34 @@ int main(void)
     //==================================================================
     // Initialize ADC
     //------------------------------------------------------------------
-    //=====================================================
+    ADCInit(3);
+    //==================================================================
+    ulong       Alarm;
+    struct
+        {
+        uint        RawData;
+        uint        CellCount;
+        float       NomVoltage;
+        BATData     BatStatus;
+        } ADCData;
+    //==================================================================
     // Main Loop
     //-----------------------------------------------------
     BLISignalOFF();
     while (TRUE)
         {
-//        Alarm = TMRSetAlarm(1000);
-//        //-----------------------------------------------------
-//        if ( (RC = MPUAsyncReadWhenReady(1, &SensorData.MPUSample1)) )
-//            BLIDeadStop("SOS", 3);
-//        //--------------------------
-//        if ( (RC = MPUAsyncReadWhenReady(2, &SensorData.MPUSample2)) )
-//            BLIDeadStop("SOS", 3);
-//        if (MPL_OK != MPLAsyncReadWhenReady(&SensorData.MPLSample))
-//            BLIDeadStop("SOS", 3);
-//        //-----------------------------------------------------
+        Alarm = TMRSetAlarm(500);
+        //-----------------------------------------------------
+        ADCData.RawData     = ADCGetRawSample();
+        ADCData.CellCount   = ADCGetCellCount();
+        ADCData.NomVoltage  = ADCGetBatteryNomVoltage();
+        ADCGetBatteryStatus(&ADCData.BatStatus);
+        //-----------------------------------------------------
         BLISignalFlip();
-//        //-------------------------
-//        SDLPostIfReady((byte*)&SensorData, sizeof(SensorData));
-//        //-------------------------
-//        TMRWaitAlarm(Alarm);
+        //-------------------------
+        SDLPostIfReady((byte*)&ADCData, sizeof(ADCData));
+        //-------------------------
+        TMRWaitAlarm(Alarm);
         }
 
     //*******************************************************************

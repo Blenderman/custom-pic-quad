@@ -1,14 +1,12 @@
 #ifndef __ADCPROFILE_H
 #define    __ADCPROFILE_H
 //=========================================================================
-// On the Quad-V3 boardBattery voltage divider is connected to pin
-// AN13/RP9I)45/RB13.
+// On the Quad-V3 board Battery voltage divider is connected to pin
+// AN13/RP(I)45/RB13.
 // Also, please NOTE that as we want to perform 12-bit ADC we are limited
 // to using ADC1 module ONLY.
 //=========================================================================
 #define ADC_AN      13
-#define ADC_TRIS    _TRISB13
-#define ADC_ANS     _ANSB13
 //=========================================================================
 
 //=========================================================================
@@ -21,6 +19,8 @@
 #define ADC_ON      AD1CON1bits.ADON
 #define ADC_SIDL    AD1CON1bits.ADSIDL      // Stop in IDLE mode
 #define ADC_12B     AD1CON1bits.AD12B       // 12-bit mode selection
+#define ADC_SSRCG   AD1CON1bits.SSRCG       // Sample clock Source Group
+#define ADC_FORM    AD1CON1bits.FORM        // ADC result format
 #define ADC_SSRC    AD1CON1bits.SSRC        // Sample Clock Source Select
 #define ADC_ASAM    AD1CON1bits.ASAM        // Sampling begins immediately 
 #define ADC_DONE    AD1CON1bits.DONE        // ADC Conversion Status 
@@ -28,6 +28,9 @@
 // ADC Control register 2
 //-------------------------------------------------------------------------
 #define ADCCON2     AD1CON2
+#define ADC_BUFS    AD1CON2bits.BUFS
+#define ADC_BUFM    AD1CON2bits.BUFM
+#define ADC_SMPI    AD1CON2bits.SMPI
 //-------------------------------------------------------------------------
 // ADC Control register 3
 //-------------------------------------------------------------------------
@@ -50,12 +53,6 @@
 #define ADCCHS0     AD1CHS0
 #define ADC_CH0SA   AD1CHS0bits.CH0SA   // Channel 0 Positive Input Select
                                         // for Sample A bits
-//=========================================================================
-
-//=========================================================================
-// ADC Result Buffer
-//=========================================================================
-#define ADCBUF      ADC1BUF0
 //=========================================================================
 
 //=========================================================================

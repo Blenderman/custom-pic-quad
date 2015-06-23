@@ -8,24 +8,27 @@
 //=====================================================
 extern uint                 _ADCIL;
 //-----------------------------------------------------
-extern ulong    volatile    _ADCValue;
-//-----------------------------------------------------
-extern ulong    volatile    _ADCBuffer;
-extern uint    volatile    _ADCSCnt;
+extern ulong   volatile     _ADCSampleSum;
+extern uint    volatile     _ADCSCnt;
 //=====================================================
-//    Run Variables - set in ADCInit(...)
+extern uint    volatile     _ADCValue;
 //-----------------------------------------------------
 extern uint                 _ADCCellCnt;
+//-----------------------------------------------------
 extern uint                 _ADCBatMinV;
 extern uint                 _ADCBatRange;
+//-----------------------------------------------------
 extern float                _ADCBatNomV;
 //-----------------------------------------------------
-//    Constants
+// Constants (specific to the board)
 //-----------------------------------------------------
-extern uint    const       _ADCMinV;
-extern uint    const       _ADCRange;
+extern float   const        _ADCVRate;
 //-----------------------------------------------------
-extern float     const       _ADCVRate;
+extern uint    const        _ADCRange;
+extern uint    const        _ADCMinV;
+//-----------------------------------------------------
+extern uint    const        _ADC2CelV;
+extern uint    const        _ADC3CelV;
 //=====================================================
 
 #endif

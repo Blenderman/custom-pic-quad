@@ -87,9 +87,43 @@ void    Init()
     PMD7 = 0xFFFF;
 
     //***********************************************
-    // Put ALL Analog pins into Digital mode
+    // Please NOTE: this board uses ADC1 to measure 
+    // battery voltage. Enabling ADC1 in PMD sets all
+    // analog-capable pins in the analog mode. Thus
+    // we need to enable ADC1 as part of the
+    // initialization process, and then reset all
+    // pins not used for analog input to digital mode.
+    //-----------------------------------------------
+    // Enabling ADC1 in the ADC module will reset all
+    // pins to analog mode, which may disrupt function
+    // of other modules.
     //***********************************************
-    ANSELB = 0x0000;
+    PMD1bits.AD1MD = 0;     // Enable ADC1
+    // On the Quad-V3 board Battery voltage divider is
+    // connected to pin AN13/RP(I)45/RB13, which
+    // previous operation already put in ANALOG mode.
+    // We need to ensure proper TRIS configuration.
+    _TRISB13 = 1;   // RB13/AN13 set for input.
+    //***********************************************
+    // Put ALL other Analog pins into Digital mode
+    //***********************************************
+    ANSELBbits.ANSB0  = 0;
+    ANSELBbits.ANSB1  = 0;
+    ANSELBbits.ANSB2  = 0;
+    ANSELBbits.ANSB3  = 0;
+    ANSELBbits.ANSB4  = 0;
+    ANSELBbits.ANSB5  = 0;
+    ANSELBbits.ANSB6  = 0;
+    ANSELBbits.ANSB7  = 0;
+    ANSELBbits.ANSB8  = 0;
+    ANSELBbits.ANSB9  = 0;
+    ANSELBbits.ANSB10 = 0;
+    ANSELBbits.ANSB11 = 0;
+    ANSELBbits.ANSB12 = 0;
+    ANSELBbits.ANSB13 = 1;  // Selected analog pin
+    ANSELBbits.ANSB14 = 0;
+    ANSELBbits.ANSB15 = 0;
+    
     ANSELC = 0x0000;
     ANSELD = 0x0000;
     ANSELE = 0x0000;
@@ -128,7 +162,7 @@ void    Init()
     IFS8    = 0;
     //***********************************************
     // Now that ALL Interrupts are individually
-    // disabled, we may enable interrup processing
+    // disabled, we may enable interrupt processing
     // globally
     //***********************************************
     _GIE    = 0b1;
@@ -142,13 +176,13 @@ void    Init()
     //         value.
     //------------------------------------------------------
     // Configure ports for Input
-    _TRISD8        = 1;
-    _TRISD9        = 1;
+    _TRISD8     = 1;
+    _TRISD9     = 1;
     _TRISD10    = 1;
     _TRISD11    = 1;
     // Enable weak pull-up on these ports
-    _CNPUD8        = 1;
-    _CNPUD9        = 1;
+    _CNPUD8     = 1;
+    _CNPUD9     = 1;
     _CNPUD10    = 1;
     _CNPUD11    = 1;
     // Give ports some time to stabilize after enabling weak pull-up
