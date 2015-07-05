@@ -15,21 +15,21 @@
 static inline BOOL    _HMC_AcquireBus()
     {
     BOOL    RC                = FALSE;
-    int        current_cpu_ipl;
+    int     current_cpu_ipl;
     //==============================================
     // Enter HMC/I2C CRITICAL SECTION
     //----------------------------------------------
-      SET_AND_SAVE_CPU_IPL(current_cpu_ipl, _HMC_IL);
+    SET_AND_SAVE_CPU_IPL(current_cpu_ipl, _HMC_IL);
     //----------------------------------------------
     // Validate SPI bus condition(s)
     if    (
-        CS            ==    0    // Target device is selected - operation is
-        ||                    // in progress
-        SPIBEC        >    0    // There are pending transfers in the buffer
+        CS          ==    0     // Target device is selected - operation is
+        ||                      // in progress
+        SPIBEC      >     0     // There are pending transfers in the buffer
         ||
-        SREMPTY        ==    0    // Shift register is not empty
+        SREMPTY     ==    0     // Shift register is not empty
         ||
-        SRXEMPTY    ==    0    // Receive FIFO is not empty
+        SRXEMPTY    ==    0     // Receive FIFO is not empty
         )
         RC = FALSE;
     else
@@ -42,7 +42,7 @@ static inline BOOL    _HMC_AcquireBus()
     //----------------------------------------------
     // Leave HMC/I2C CRITICAL SECTION
     //==============================================
-      RESTORE_CPU_IPL(current_cpu_ipl);
+    RESTORE_CPU_IPL(current_cpu_ipl);
     //==============================================
     return RC;
     }

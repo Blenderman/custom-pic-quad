@@ -11,46 +11,144 @@
 //=====================================================================
 typedef struct
 	{
-	float	M_1_1, M_1_2, M_1_3;		// First row
-	float	M_2_1, M_2_2, M_2_3;		// Second row
-	float	M_3_1, M_3_2, M_3_3;		// First row
+    //-----------------------------------------------------------
+    // This structure represents 3x3 matrix as a collection
+    // of 3 3-dimensional row vectors
+    //-----------------------------------------------------------
+	Vector  Row1;		// First row
+	Vector  Row2;		// Second row
+	Vector	Row3;		// Third row
 	} Matrix;
 //=====================================================================
+// <editor-fold defaultstate="collapsed" desc="Column retrieval functions">
+static inline Vector* MatrixGetCol1(Matrix* M, Vector* V)
+    { return VectorSet(M->Row1.X, M->Row2.X, M->Row3.X, &V); }
+//---------------------------------------------------------------------
+static inline Vector* MatrixGetCol2(Matrix* M, Vector* V)
+    { return VectorSet(M->Row1.Y, M->Row2.Y, M->Row3.Y, &V); }
+//---------------------------------------------------------------------
+static inline Vector* MatrixGetCol3(Matrix* M, Vector* V)
+    { return VectorSet(M->Row1.Z, M->Row2.Z, M->Row3.Z, &V); }
+// </editor-fold>
+//=====================================================================
+// <editor-fold defaultstate="collapsed" desc="Basic matrix operations - Copy, Transpose, Set Identity">
+//---------------------------------------------------------------------
+static inline Matrix*	MatrixCopy(Matrix* F, Matrix* T)
+	{
+	VectorCopy(&F->Row1, &T->Row1);
+	VectorCopy(&F->Row2, &T->Row2);
+	VectorCopy(&F->Row3, &T->Row3);
+	//----------------------------------------
+	return T;
+	}
+//---------------------------------------------------------------------
 static inline Matrix*	MatrixSetIdentity(Matrix* I)
 	{
-	//----------------------------------------
-	// Main Diagonal
-	//----------------------------------------
-	I->M_1_1 = I->M_2_2 = I->M_3_3 = 1.0;
-	//---------------------
-	// All other elements
-	//----------------------------------------
-	I->M_2_1 = I->M_3_1 = I->M_1_2 = I->M_3_2 = I->M_1_3 = I->M_2_3 = 0.0;
+	VectorSet(1.0, 0.0, 0.0,  &I->Row1);
+	VectorSet(0.0, 1.0, 0.0,  &I->Row2);
+	VectorSet(0.0, 0.0, 1.0,  &I->Row3);
 	//----------------------------------------
 	return I;
 	}
-//=====================================================================
-static inline Matrix*	MatrixTranspose(Matrix* S, Matrix* T)
+//---------------------------------------------------------------------
+static inline Matrix*	MatrixTranspose(Matrix* M, Matrix* MT)
 	{
-	T->M_1_1	= S->M_1_1;
-	T->M_1_2	= S->M_2_1;
-	T->M_1_3	= S->M_3_1;
+    MatrixGetCol1(M, &MT->Row1);
+    MatrixGetCol2(M, &MT->Row2);
+    MatrixGetCol3(M, &MT->Row3);
 	//---------------------
-	T->M_2_1	= S->M_1_2;
-	T->M_2_2	= S->M_2_2;
-	T->M_2_3	= S->M_3_2;
-	//---------------------
-	T->M_3_1	= S->M_1_3;
-	T->M_3_2	= S->M_2_3;
-	T->M_3_3	= S->M_3_3;
-	//---------------------
+	return MT;
+	}
+//---------------------------------------------------------------------
+// </editor-fold>
+//=====================================================================
+// <editor-fold defaultstate="collapsed" desc="Various multiplication operations">
+//---------------------------------------------------------------------
+static inline Matrix*	MatrixMult(Matrix* L, Matrix* R, Matrix* T)
+	{
+	Vector	Col1, Col2, Col3;
+	//------------------------------------
+	MatrixGetCol1(R, &Col1);
+	MatrixGetCol2(R, &Col2);
+	MatrixGetCol3(R, &Col3);
+	//------------------------------------
+    // Set first row of result
+	//------------------------------------
+	VectorSet(  VectorDotProduct(&R->Row1, &Col1),
+                VectorDotProduct(&R->Row1, &Col2),
+                VectorDotProduct(&R->Row1, &Col3),
+             &T->Row1 );
+	//------------------------------------
+    // Set second row of result
+	//------------------------------------
+	VectorSet(  VectorDotProduct(&R->Row2, &Col1),
+                VectorDotProduct(&R->Row2, &Col2),
+                VectorDotProduct(&R->Row2, &Col3),
+             &T->Row2 );
+	//------------------------------------
+    // Set third row of result
+	//------------------------------------
+	VectorSet(  VectorDotProduct(&R->Row3, &Col1),
+                VectorDotProduct(&R->Row3, &Col2),
+                VectorDotProduct(&R->Row3, &Col3),
+             &T->Row3 );
+	//------------------------------------
 	return T;
 	}
+//---------------------------------------------------------------------
+static inline Vector*	MatrixTimesColumnVector(Matrix* L, 
+                                                Vector* R, 
+                                                Vector* T)
+	{
+	//------------------------------------
+    T->X    = VectorDotProduct(&L->Row1, R);
+    T->Y    = VectorDotProduct(&L->Row2, R);
+    T->Z    = VectorDotProduct(&L->Row3, R);
+	//------------------------------------
+	return T;
+	}
+//---------------------------------------------------------------------
+static inline Vector*	RowVectorTimesMatrix(   Vector* L, 
+                                                Matrix* R, 
+                                                Vector* T)
+	{
+	Vector	Col;
+	//------------------------------------
+	T->X	= VectorDotProduct(L, MatrixGetCol1(R, &Col));
+	T->Y	= VectorDotProduct(L, MatrixGetCol2(R, &Col));
+	T->Z	= VectorDotProduct(L, MatrixGetCol3(R, &Col));
+	//------------------------------------
+	return T;
+	}
+//---------------------------------------------------------------------
+// </editor-fold>
+//=====================================================================
+// <editor-fold defaultstate="collapsed" desc="Matrix representation of infinitesmall rotation">
+//---------------------------------------------------------------------
+static inline Matrix*	MatrixSetSmallRotation(Vector* dR, Matrix* DCM)
+	{
+	// dR (Delta Rotation) - pseudo-vector represents 
+    // small rotations: around X (roll), around Y (pitch),
+    // and around Z (yaw)
+	//--------------------------------------------
+	// Infinitesimal Rotation Approximation...
+	VectorSet(   1.0, -dR->Z,  dR->Y,  &DCM->Row1);
+	VectorSet( dR->Z,    1.0, -dR->X,  &DCM->Row2);
+	VectorSet(-dR->Y,   dR->X,   1.0,  &DCM->Row3);
+	//--------------------------------------------
+	//		1		-sin(Yaw)		 sin(Pitch)
+	//	 sin(Yaw)		1			-sin(Roll)
+	//	-sin(Pitch)	 sin(Roll)			1
+	//--------------------------------------------
+	return DCM;
+	}
+//---------------------------------------------------------------------
+// </editor-fold>
 //=====================================================================
 static inline Matrix*	MatrixEulerRotation(float	Roll,
 											float	Pitch,
 											float	Yaw,
-											Matrix* T)
+											Matrix* DCM)
 	{
 	float	SinRoll		= sinf(Roll);
 	float	CosRoll		= cosf(Roll);
@@ -59,182 +157,65 @@ static inline Matrix*	MatrixEulerRotation(float	Roll,
 	float	SinYaw		= sinf(Yaw);
 	float	CosYaw		= cosf(Yaw);
 	//----------------------------------------
-	// First column
+	// First Row
 	//----------------------------------------
-	T->M_1_1	= CosPitch * CosYaw;
-	T->M_2_1	= CosPitch * SinYaw;
-	T->M_3_1	= -SinPitch;
+	VectorSet(  CosPitch * CosYaw,
+                SinRoll * SinPitch * CosYaw - CosRoll * SinYaw,
+                CosRoll * SinPitch * CosYaw + SinRoll * SinYaw,
+             &DCM->Row1 )
 	//---------------------
-	// Second column
+	// Second Row
 	//----------------------------------------
-	T->M_1_2	= SinRoll * SinPitch * CosYaw - CosRoll * SinYaw;
-	T->M_2_2	= SinRoll * SinPitch * SinYaw + CosRoll * CosYaw;
-	T->M_3_2	= SinRoll * CosPitch;
+	VectorSet(  CosPitch * SinYaw,
+                SinRoll * SinPitch * SinYaw + CosRoll * CosYaw,
+                CosRoll * SinPitch * SinYaw - SinRoll * CosYaw,
+             &DCM->Row2 );
 	//---------------------
-	// Third column
+	// Third Row
 	//----------------------------------------
-	T->M_1_3	= CosRoll * SinPitch * CosYaw + SinRoll * SinYaw;
-	T->M_2_3	= CosRoll * SinPitch * SinYaw - SinRoll * CosYaw;
-	T->M_3_3	= CosRoll * CosPitch;
+	VectorSet( -SinPitch,
+                SinRoll * CosPitch,
+                CosRoll * CosPitch,
+             &DCM->Row3 );
 	//----------------------------------------
-	return T;
+	return DCM;
 	}
 //=====================================================================
-static inline Matrix*	MatrixRollRotation(float Roll, Matrix* T)
+static inline Matrix*	MatrixRollRotation(float Roll, Matrix* DCM)
 	{
 	float	SinRoll		= sinf(Roll);
 	float	CosRoll		= cosf(Roll);
 	//----------------------------------------
-	// First column
+	VectorSet(  1.0,    0.0,        0.0,        &DCM->Row1 )
+	VectorSet(  0.0,    CosRoll,   -SinRoll,    &DCM->Row2 );
+	VectorSet(  0.0,    SinRoll,    CosRoll,    &DCM->Row3 );
 	//----------------------------------------
-	T->M_1_1	=  1.0;
-	T->M_2_1	=  0.0;
-	T->M_3_1	=  0.0;
-	//---------------------
-	// Second column
-	//----------------------------------------
-	T->M_1_2	=  0.0;
-	T->M_2_2	=  CosRoll;
-	T->M_3_2	=  SinRoll;
-	//---------------------
-	// Third column
-	//----------------------------------------
-	T->M_1_3	=  0.0;
-	T->M_2_3	= -SinRoll;
-	T->M_3_3	=  CosRoll;
-	//----------------------------------------
-	return T;
+	return DCM;
 	}
 //=====================================================================
-static inline Matrix*	MatrixPitchRotation(float Pitch, Matrix* T)
+static inline Matrix*	MatrixPitchRotation(float Pitch, Matrix* DCM)
 	{
 	float	SinPitch	= sinf(Pitch);
 	float	CosPitch	= cosf(Pitch);
 	//----------------------------------------
-	// First column
+	VectorSet(  CosPitch,   0.0,    SinPitch,   &DCM->Row1 )
+	VectorSet(  0.0,        1.0,    0.0,        &DCM->Row2 );
+	VectorSet( -SinPitch,   0.0,    CosPitch,   &DCM->Row3 );
 	//----------------------------------------
-	T->M_1_1	=  CosPitch;
-	T->M_2_1	=  0.0;
-	T->M_3_1	= -SinPitch;
-	//---------------------
-	// Second column
-	//----------------------------------------
-	T->M_1_2	=  0.0;
-	T->M_2_2	=  1.0;
-	T->M_3_2	=  0.0;
-	//---------------------
-	// Third column
-	//----------------------------------------
-	T->M_1_3	=  SinPitch;
-	T->M_2_3	=  0.0;
-	T->M_3_3	=  CosPitch;
-	//----------------------------------------
-	return T;
+	return DCM;
 	}
 //=====================================================================
-static inline Matrix*	MatrixYawRotation(float	Yaw, Matrix* T)
+static inline Matrix*	MatrixYawRotation(float	Yaw, Matrix* DCM)
 	{
 	float	SinYaw		= sinf(Yaw);
 	float	CosYaw		= cosf(Yaw);
 	//----------------------------------------
-	// First column
+	VectorSet(  CosYaw,    -SinYaw, 0.0,        &DCM->Row1 )
+	VectorSet(  SinYaw,     CosYaw, 0.0,        &DCM->Row2 );
+	VectorSet(  0.0,        0.0,    1.0,        &DCM->Row3 );
 	//----------------------------------------
-	T->M_1_1	=  CosYaw;
-	T->M_2_1	=  SinYaw;
-	T->M_3_1	=  0.0;
-	//---------------------
-	// Second column
-	//----------------------------------------
-	T->M_1_2	= -SinYaw;
-	T->M_2_2	=  CosYaw;
-	T->M_3_2	=  0.0;
-	//---------------------
-	// Third column
-	//----------------------------------------
-	T->M_1_3	=  0.0;
-	T->M_2_3	=  0.0;
-	T->M_3_3	=  1.0;
-	//----------------------------------------
-	return T;
+	return DCM;
 	}
-//=====================================================================
-static inline Vector*	MatrixGetRow(Matrix* M, uint Row, Vector* T)
-	{
-	switch (Row)
-		{
-		case 1:
-			return VectorSet(M->M_1_1, M->M_1_2, M->M_1_3, T);
-		case 2:
-			return VectorSet(M->M_2_1, M->M_2_2, M->M_2_3, T);
-		case 3:
-		default:
-			return VectorSet(M->M_3_1, M->M_3_2, M->M_3_3, T);
-		}
-	}
-//=====================================================================
-static inline Vector*	MatrixGetCol(Matrix* M, uint Col, Vector* T)
-	{
-	switch (Col)
-		{
-		case 1:
-			return VectorSet(M->M_1_1, M->M_2_1, M->M_3_1, T);
-		case 2:
-			return VectorSet(M->M_1_2, M->M_2_2, M->M_3_2, T);
-		case 3:
-		default:
-			return VectorSet(M->M_1_3, M->M_2_3, M->M_3_3, T);
-		}
-	}
-//=====================================================================
-static inline Matrix*	MatrixMult(Matrix* L, Matrix* R, Matrix* T)
-	{
-	Vector	Row;
-	Vector	Col1, Col2, Col3;
-	//------------------------------------
-	MatrixGetCol(R, 1, &Col1);
-	MatrixGetCol(R, 2, &Col2);
-	MatrixGetCol(R, 3, &Col3);
-	//------------------------------------
-	MatrixGetRow(L, 1, &Row);
-	T->M_1_1	= VectorDotProduct(&Row, &Col1);
-	T->M_1_2	= VectorDotProduct(&Row, &Col2);
-	T->M_1_3	= VectorDotProduct(&Row, &Col3);
-	//------------------------------------
-	MatrixGetRow(L, 2, &Row);
-	T->M_2_1	= VectorDotProduct(&Row, &Col1);
-	T->M_2_2	= VectorDotProduct(&Row, &Col2);
-	T->M_2_3	= VectorDotProduct(&Row, &Col3);
-	//------------------------------------
-	MatrixGetRow(L, 3, &Row);
-	T->M_3_1	= VectorDotProduct(&Row, &Col1);
-	T->M_3_2	= VectorDotProduct(&Row, &Col2);
-	T->M_3_3	= VectorDotProduct(&Row, &Col3);
-	//------------------------------------
-	return T;
-	}
-//=====================================================================
-static inline Vector*	MatrixTimesVector(Matrix* L, Vector* R, Vector* T)
-	{
-	Vector	Row;
-	//------------------------------------
-	T->X	= VectorDotProduct(MatrixGetRow(L, 1, &Row), R);
-	T->Y	= VectorDotProduct(MatrixGetRow(L, 2, &Row), R);
-	T->Z	= VectorDotProduct(MatrixGetRow(L, 3, &Row), R);
-	//------------------------------------
-	return T;
-	}
-//=====================================================================
-static inline Vector*	VectorTimesMatrix(Vector* L, Matrix* R, Vector* T)
-	{
-	Vector	Col;
-	//------------------------------------
-	T->X	= VectorDotProduct(L, MatrixGetCol(R, 1, &Col));
-	T->Y	= VectorDotProduct(L, MatrixGetCol(R, 2, &Col));
-	T->Z	= VectorDotProduct(L, MatrixGetCol(R, 3, &Col));
-	//------------------------------------
-	return T;
-	}
-
 //=====================================================================
 #endif	/* __MATRIX_H */
 

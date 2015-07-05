@@ -90,6 +90,47 @@ uint    MPUAsyncReadWhenReady(uint MPUx, MPUData* pSample)
     }
 //*************************************************************
 
+
+//*************************************************************
+uint    MPUAsyncReadCombined(MPUData* pSample)
+    {
+    //---------------------------------------------------------
+    // This function attempts to read both sensors (if both are
+    // enabled) and returns average of measurements from both.
+    // If only one sensor is enabled, this function returns
+    // MPU_NOTA error code; in this case please use
+    // MPUAsyncReadIfReady(...) specifying available sensor.
+    //---------------------------------------------------------
+    #ifndef Use_MPU1
+    return MPU_NOTA;
+    #endif
+    #ifndef Use_MPU2
+    return MPU_NOTA;
+    #endif
+    //---------------------------------------------------------
+    MPUData Sample1;
+    MPUData Sample2;
+    //---------------------------------------------------------
+    uint    RC;
+    //---------------------------------------------------------
+    if ( MPU_OK != (RC = MPUAsyncReadIfReady(1, &Sample1)) )
+        return RC;
+    if ( MPU_OK != (RC = MPUAsyncReadIfReady(2, &Sample2)) )
+        return RC;
+    //---------------------------------------------------------
+    pSample->TS     =  Sample1.TS;
+    pSample->Temp   = (Sample1.Temp + Sample2.Temp)*0.5;
+    //---------------------------------------------------------
+    VectorAdd(&Sample1.A, &Sample2.A, &pSample->A);
+    VectorScale(&pSample->A, 0.5, &pSample->A);
+    //---------------------------------------------------------
+    VectorAdd(&Sample1.G, &Sample2.G, &pSample->G);
+    VectorScale(&pSample->G, 0.5, &pSample->G);
+    //---------------------------------------------------------
+    return MPU_OK;
+    }
+//*************************************************************
+
 //*************************************************************
 uint    _MPUAsyncRead(MPU_CB* pCB, MPUData* pSample)
     {

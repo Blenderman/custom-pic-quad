@@ -117,8 +117,8 @@ uint    MPUAsyncStop(uint MPUx);
 
 uint    MPUAsyncReadIfReady(uint MPUx, MPUData* pSample);
 uint    MPUAsyncReadWhenReady(uint MPUx, MPUData* pSample);
-// Convenient synonym
-#define MPUAsyncRead(MPUx, pSample) MPUAsyncReadIfReady(MPUx, pSample)
+
+uint    MPUAsyncReadCombined(MPUData* pSample);
 
 //=====================================================
 #endif        // __MPU_H
