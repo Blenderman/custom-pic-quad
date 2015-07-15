@@ -1,18 +1,10 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
 #include "UART\UART_TX.h"
 #include "ADC\ADC.h"
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "UART/UART_TX.h"
-#include "ADC/ADC.h"
->>>>>>> Kopelow
 
 int main(void)
 	{

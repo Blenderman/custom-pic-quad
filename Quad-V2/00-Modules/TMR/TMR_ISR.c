@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "TMR\TMRLocal.h"
-=======
-#include "TMR/TMRLocal.h"
->>>>>>> Kopelow
 
 //*************************************************************
 void __attribute__((__interrupt__, __no_auto_psv__)) _T1Interrupt(void)

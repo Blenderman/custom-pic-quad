@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "BLI\BLILocal.h"
-=======
-#include "BLI/BLILocal.h"
->>>>>>> Kopelow
 
 //************************************************************
 uint			_BLIInit 	= 0;	// BLI initializtion flag

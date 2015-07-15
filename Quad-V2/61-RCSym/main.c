@@ -1,6 +1,5 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -8,15 +7,6 @@
 #include "RC\RC.h"
 #include "RC\RCSym.h"
 #include "UART\UART.h"
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "MCM/MCM.h"
-#include "RC/RC.h"
-#include "RC/RCSym.h"
-#include "UART/UART_TX.h"
->>>>>>> Kopelow
 
 int main(void)
 	{

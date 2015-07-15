@@ -1,12 +1,7 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "Matrix3d\Matrix3D.h"
-=======
-#include "Init/Init.h"
-#include "Matrix3d/Matrix3D.h"
->>>>>>> Kopelow
 
 int main(void)
 	{

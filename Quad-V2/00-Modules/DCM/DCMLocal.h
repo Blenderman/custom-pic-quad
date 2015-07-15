@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 #include "DCM\DCM.h"
 #include "HMCMAG\HMCMAG.h"
-=======
-#include "DCM/DCM.h"
-#include "HMCMAG/HMCMAG.h"
->>>>>>> Kopelow
 
 //=====================================================
 #ifndef __DCMLocal_H

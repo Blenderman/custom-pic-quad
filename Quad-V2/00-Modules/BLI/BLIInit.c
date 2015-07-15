@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 #include "BLI\BLILocal.h"
 #include "TMR\TMRLocal.h"
-=======
-#include "BLI/BLILocal.h"
-#include "TMR/TMRLocal.h"
->>>>>>> Kopelow
 
 
 //************************************************************

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "MPU6050\MPU6050_Local.h"
-=======
-#include "MPU6050/MPU6050_Local.h"
->>>>>>> Kopelow
 
 //==================================================================
 volatile byte		_MPU_IL		= 0; 	// MPU (INT1) interrupt level

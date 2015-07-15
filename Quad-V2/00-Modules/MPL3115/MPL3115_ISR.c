@@ -1,9 +1,5 @@
 #include "System.h"
-<<<<<<< HEAD
 #include "MPL3115\MPL3115_Local.h"
-=======
-#include "MPL3115/MPL3115_Local.h"
->>>>>>> Kopelow
 
 //================================================================
 void __attribute__((interrupt, no_auto_psv)) MPL_Interrupt(void)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "DBG\DBG.h"
-=======
-#include "DBG/DBG.h"
->>>>>>> Kopelow
 
 //************************************************************
 void	DBGInit()

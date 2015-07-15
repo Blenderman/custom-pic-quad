@@ -1,6 +1,5 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -9,16 +8,6 @@
 //---------------------------------
 #include "MXB\MXB.h"
 #include "MXB\MXBLocal.h"
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "UART/UART_TX.h"
-
-//---------------------------------
-#include "MXB/MXB.h"
-#include "MXB/MXBLocal.h"
->>>>>>> Kopelow
 //---------------------------------
 
 #include <string.h>		// Required for memcpy(...)

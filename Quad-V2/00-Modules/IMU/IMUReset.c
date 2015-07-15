@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "IMU\IMULocal.h"
-=======
-#include "IMU/IMULocal.h"
->>>>>>> Kopelow
 
 //************************************************************
 volatile uint	_IMUReady 		= 0;	// IMU initializtion flag

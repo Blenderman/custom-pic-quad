@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "ADC\ADC.h"
-=======
-#include "ADC/ADC.h"
->>>>>>> Kopelow
 
 //=====================================================
 #ifndef __ADCLocal_H

@@ -1,11 +1,6 @@
 #include "System.h"
-<<<<<<< HEAD
 #include "I2C\I2C.h"
 #include "Vector\Vector.h"
-=======
-#include "I2C/I2C.h"
-#include "Vector/Vector.h"
->>>>>>> Kopelow
 
 //=====================================================
 #ifndef __MPL3115_H

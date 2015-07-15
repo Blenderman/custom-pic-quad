@@ -26,19 +26,11 @@
           <itemPath>../00-Modules/HMCMAG/HMCMAG.h</itemPath>
           <itemPath>../00-Modules/HMCMAG/HMCMAG_Async.c</itemPath>
           <itemPath>../00-Modules/HMCMAG/HMCMAG_Init.c</itemPath>
-<<<<<<< HEAD
           <itemPath>../00-Modules/HMCMAG/HMCMAG_ISR_INT2.c</itemPath>
-=======
->>>>>>> Kopelow
           <itemPath>../00-Modules/HMCMAG/HMCMAG_Local.c</itemPath>
           <itemPath>../00-Modules/HMCMAG/HMCMAG_Local.h</itemPath>
           <itemPath>../00-Modules/HMCMAG/HMCMAG_Mgmt.c</itemPath>
           <itemPath>../00-Modules/HMCMAG/HMCMAG_Sync.c</itemPath>
-<<<<<<< HEAD
-=======
-          <itemPath>/Users/rich/quads/alexcontroller/branches/Kopelow/Quad-V2/00-Modules/HMCMAG/HMCMAG_ISR.c</itemPath>
-          <itemPath>/Users/rich/quads/alexcontroller/branches/Kopelow/Quad-V2/00-Modules/HMCMAG/HMCMAG_Profile.h</itemPath>
->>>>>>> Kopelow
         </logicalFolder>
         <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
           <itemPath>../00-Modules/I2C/I2C.h</itemPath>
@@ -67,17 +59,10 @@
           <itemPath>../00-Modules/UART/UART_TX_API.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Init.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_ISR.c</itemPath>
-<<<<<<< HEAD
           <itemPath>../00-Modules/UART/UART_TX.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Local.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Local.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Profile.h</itemPath>
-=======
-          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX.h</itemPath>
-          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.c</itemPath>
-          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Local.h</itemPath>
-          <itemPath>/Users/rich/quads/alexcontroller/svnRoot/Quad-V2/00-Modules/UART/UART_TX_Profile.h</itemPath>
->>>>>>> Kopelow
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
@@ -99,14 +84,10 @@
         <targetDevice>PIC24HJ128GP204</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit2PlatformTool</platformTool>
+        <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.21</languageToolchainVersion>
-<<<<<<< HEAD
         <platform>3</platform>
-=======
-        <platform>4</platform>
->>>>>>> Kopelow
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -144,11 +125,7 @@
         <property key="enable-short-double" value="false"/>
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
-<<<<<<< HEAD
         <property key="extra-include-directories" value="..\00-Modules"/>
-=======
-        <property key="extra-include-directories" value="../00-Modules"/>
->>>>>>> Kopelow
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
@@ -251,14 +228,6 @@
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
       </C30Global>
-      <PICkit2PlatformTool>
-        <property key="pk2settings.3state" value="false"/>
-        <property key="pk2settings.preserveee" value="false"/>
-        <property key="pk2settings.setvddvoltage" value=""/>
-        <property key="pk2settings.userpgmexec" value="true"/>
-        <property key="pk2settings.usetargetpower" value="false"/>
-      </PICkit2PlatformTool>
-<<<<<<< HEAD
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -315,8 +284,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.375"/>
       </PICkit3PlatformTool>
-=======
->>>>>>> Kopelow
     </conf>
   </confs>
 </configurationDescriptor>

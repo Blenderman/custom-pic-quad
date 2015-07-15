@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "MPU6050\MPU6050_Local.h"
-=======
-#include "MPU6050/MPU6050_Local.h"
->>>>>>> Kopelow
 
 //-------------------------------------------------------
 // MPU6050 Asynchronous Read operation is closely linked with

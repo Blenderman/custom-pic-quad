@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "MPU6050\MPU6050_Local.h"
-=======
-#include "MPU6050/MPU6050_Local.h"
->>>>>>> Kopelow
 
 //=============================================================
 // Synchronous READ SAMPLE API (visible externally)

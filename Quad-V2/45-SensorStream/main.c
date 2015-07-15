@@ -1,6 +1,5 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -8,15 +7,6 @@
 #include "MPU6050\MPU6050.h"
 #include "HMCMAG\HMCMAG.h"
 #include "UART\UART.h"
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "I2C/I2C.h"
-#include "MPU6050/MPU6050.h"
-#include "HMCMAG/HMCMAG.h"
-#include "UART/UART_TX.h"
->>>>>>> Kopelow
 
 int main(void)
 	{
@@ -59,12 +49,7 @@ int main(void)
 	//*******************************************************************
 	uint			RC			= 0;
 	//--------------------------
-<<<<<<< HEAD
 	MPUSample		AGSample;
-=======
-	//MPUSample		AGSample;
-        MPUData 		AGSample;
->>>>>>> Kopelow
 	#ifdef __MAG_Use__
 	HMCSample		MSample;
 	#endif

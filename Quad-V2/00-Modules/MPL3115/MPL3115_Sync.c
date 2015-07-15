@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "MPL3115\MPL3115_Local.h"
-=======
-#include "MPL3115/MPL3115_Local.h"
->>>>>>> Kopelow
 
 //=============================================================
 // Synchronous READ SAMPLE API (visible externally)

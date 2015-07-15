@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 #include "I2C\I2C_Profile.h"
 #include "HMCMAG\HMCMAG_Local.h"
-=======
-#include "I2C/I2C_Profile.h"
-#include "HMCMAG/HMCMAG_Local.h"
->>>>>>> Kopelow
 //*******************************************************
 
 //=============================================================

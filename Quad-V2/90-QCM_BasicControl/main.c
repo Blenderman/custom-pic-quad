@@ -1,6 +1,5 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -16,23 +15,6 @@
 
 #include "QCM\QCM.h"
 #include "QCM\QCMStepData.h"		// Needed for Telemetry data
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "MCM/MCM.h"
-#include "RC/RC.h"
-#include "ADC/ADC.h"
-#include "I2C/I2C.h"
-#include "MPU6050/MPU6050.h"
-#include "HMCMAG/HMCMAG.h"
-#include "UART/UART_TX.h"
-#include "DCM/DCM.h"
-#include "IMU/IMU.h"
-
-#include "QCM/QCM.h"
-#include "QCM/QCMStepData.h"		// Needed for Telemetry data
->>>>>>> Kopelow
 
 //=======================================================================
 
@@ -506,11 +488,7 @@ Re_Start:
 		else
 			{
 			// Without Course-Lock Yaw is treated as "direct input" and
-<<<<<<< HEAD
 			// just smoothed similar to other control variables.
-=======
-			// just smothed similar to other control variables.
->>>>>>> Kopelow
 			RCSmthd.Yaw		= (RCSmthd.Yaw	+ RCFeed.Yaw  ) * 0.5;
 			}
 		//------------------------------------------------------------

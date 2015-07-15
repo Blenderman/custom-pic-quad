@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 #include "TMR\TMR.h"
 #include "I2C\I2C_Profile.h"
 
 #include "MPU6050\MPU6050.h"
-=======
-#include "TMR/TMR.h"
-#include "I2C/I2C_Profile.h"
-
-#include "MPU6050/MPU6050.h"
->>>>>>> Kopelow
 
 //==================================================================
 #ifndef __MPU6050_Local_H

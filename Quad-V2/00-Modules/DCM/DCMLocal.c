@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "DCM\DCMLocal.h"
-=======
-#include "DCM/DCMLocal.h"
->>>>>>> Kopelow
 
 //==================================================================
 // Rotation Matrix - defines rotations experienced by the body

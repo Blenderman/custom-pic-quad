@@ -1,16 +1,9 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
 #include "MCM\MCM.h"
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "MCM/MCM.h"
->>>>>>> Kopelow
 
 void DeadStop(char * pStr, uint Length);
 

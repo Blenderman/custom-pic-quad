@@ -1,6 +1,5 @@
 #include "System.h"
 //---------------------------------
-<<<<<<< HEAD
 #include "Init\Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
@@ -17,24 +16,6 @@
 
 #include "QCM\QCM.h"
 #include "QCM\QCMStepData.h"		// Needed for Telemetry data
-=======
-#include "Init/Init.h"
-#include "TMR/TMR.h"
-#include "BLI/BLI.h"
-#include "MCM/MCM.h"
-#include "RC/RC.h"
-#include "ADC/ADC.h"
-#include "I2C/I2C.h"
-#include "MPU6050/MPU6050.h"
-#include "HMCMAG/HMCMAG.h"
-#include "UART/UART_TX.h"
-#include "DCM/DCM.h"
-#include "IMU/IMU.h"
-#include "Altimeter/Altimeter.h"
-
-#include "QCM/QCM.h"
-#include "QCM/QCMStepData.h"		// Needed for Telemetry data
->>>>>>> Kopelow
 
 //=======================================================================
 
@@ -300,11 +281,7 @@ int main(void)
 	//--------------------------
 	I2CInit(5, 1);		// Initialize I2C1 module with IPL=5 and Fscl=400 KHz
 	//--------------------------
-<<<<<<< HEAD
 	UARTInitTX(6, 350);	// Initialize UART1 for TX on IPL=6 at 
-=======
-	UARTInitTX(6, 48);	// Initialize UART1 for TX on IPL=6 at
->>>>>>> Kopelow
 	// BaudRate =   48	=>   115,200 bps	- ZigBEE
 	//--------------------------------------
 	// BaudRate =  100	=>   250,000 bps

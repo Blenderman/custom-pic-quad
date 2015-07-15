@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "I2C\I2C_Local.h"
-=======
-#include "I2C/I2C_Local.h"
->>>>>>> Kopelow
 
 //==================================================================
 // Internal (local) components of Synchronous I2C interface

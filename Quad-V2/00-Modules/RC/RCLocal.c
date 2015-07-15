@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
 #include "RC\RCLocal.h"
-=======
-#include "RC/RCLocal.h"
->>>>>>> Kopelow
 
 //************************************************************
 // Module control values
