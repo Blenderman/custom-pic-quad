@@ -1,49 +1,70 @@
 #include "System.h"
 //---------------------------------
-#include "Init\Init.h"
-#include "Init\Switches.h"
+#include "Init/Init.h"
 #include "TMR\TMR.h"
 #include "BLI\BLI.h"
-
+//---------------------------------
 
 int main(void)
-    {
+	{
 
-    //*******************************************************************
-    Init();
-    TMRInit(2);        // Initialize Timer interface with Priority=2
-    BLIInit();        // Initialize Signal interface
-    //*******************************************************************
+	//*******************************************************************
+	Init();
+	TMRInit(2);		// Initialize Timer interface with Priority=2
+	BLIInit();		// Initialize Signal interface
+	//*******************************************************************
+//	_T1IE 	= 0; 		// Temporarily disable Timer1 interrupt
+	//*******************************************************************
+//	_TRISA10 = 0;
+//	_LATA10 = 0;
 
-    BLISignalON();
+	long i	= 0;
+	for (i = 0; i < 1000; i++);
 
-//    ulong    i;
-//    ulong    j    = 307400;            // 1 msec, 500 Hz
-//    while(1)
-//        {
-//        for (i=0; i < j; i++);
-//        BLISignalFlip();
-//        }
+	ulong	Delay = 10;
+	ulong	RTC;
+	ulong	Alarm;
 
-//    while (1)
-//        {
-//        TMRDelay(100);
-//        BLISignalFlip();
-//        }
+	RTC		= TMRGetRTC();
+	Alarm	= TMRSetAlarm(Delay);
 
-    byte Mult    = ((_SW1* 2 + _SW2)*2 + _SW3)* 2 + _SW4 + 1;
-    uint Freq    = 50 * Mult;
+	i++;
 
-    while(1)
-        {
-        BLIAsyncStart(Freq, 2 * Freq);
-        TMRDelay(5000);        // Delay 5 sec
-        //--------------------------------
-        BLIAsyncMorse("SOS", 3);
-        TMRDelay(5000);        // Delay 5 sec
-        }
-    //*******************************************************************
+	BLISignalON();
+	while (1)
+	  {
+		TMRDelay(1000);
+		BLISignalFlip();
+	  }
+	
 
-    return 1;
-    }
+
+	BLISignalON();
+	while (1)
+		{
+		TMRDelay(30);
+//		for (i=0; i < 1000001; i++);
+//		_LATA10 ^=1;
+		BLISignalFlip();
+		}
+
+	while(1);
+		{
+		for (i=0; i < 1000001; i++);
+		BLISignalFlip();
+		}
+
+
+	while(1)
+		{
+		BLIAsyncStart(500, 1000);
+		TMRDelay(5000);		// Delay 5 sec
+		//--------------------------------
+		BLIAsyncMorse("SOS", 3);
+		TMRDelay(5000);		// Delay 5 sec
+		}
+	//*******************************************************************
+
+	return 1;
+	}
 
