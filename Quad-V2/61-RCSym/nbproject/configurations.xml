@@ -34,12 +34,13 @@
           <itemPath>../00-Modules/MCM/MCMLocal.h</itemPath>
         </logicalFolder>
         <logicalFolder name="RC" displayName="RC" projectFiles="true">
+          <logicalFolder name="RC-Sym" displayName="RC-Sym" projectFiles="true">
+          </logicalFolder>
           <itemPath>../00-Modules/RC/RC.c</itemPath>
           <itemPath>../00-Modules/RC/RC.h</itemPath>
           <itemPath>../00-Modules/RC/RCInit.c</itemPath>
           <itemPath>../00-Modules/RC/RCLocal.c</itemPath>
           <itemPath>../00-Modules/RC/RCLocal.h</itemPath>
-          <itemPath>../00-Modules/RC/RC_ISR.c</itemPath>
           <itemPath>../00-Modules/RC/RCSym.c</itemPath>
           <itemPath>../00-Modules/RC/RCSym.h</itemPath>
           <itemPath>../00-Modules/RC/RCSymData_BalanceHard.h</itemPath>
@@ -47,7 +48,10 @@
           <itemPath>../00-Modules/RC/RCSymData_MB_Hard.h</itemPath>
           <itemPath>../00-Modules/RC/RCSymData_MB_Ramp.h</itemPath>
           <itemPath>../00-Modules/RC/RCSymData_MB_Soft.h</itemPath>
+          <itemPath>../00-Modules/RC/RCSymData_VibroTest.h</itemPath>
           <itemPath>../00-Modules/RC/RCSymData_YawTest.h</itemPath>
+          <itemPath>../00-Modules/RC/RCSym_Local.h</itemPath>
+          <itemPath>../00-Modules/RC/RC_ISR.c</itemPath>
         </logicalFolder>
         <logicalFolder name="TMR" displayName="TMR" projectFiles="true">
           <itemPath>../00-Modules/TMR/TMR.c</itemPath>
@@ -58,12 +62,13 @@
           <itemPath>../00-Modules/TMR/TMR_ISR.c</itemPath>
         </logicalFolder>
         <logicalFolder name="UART" displayName="UART" projectFiles="true">
-          <itemPath>../00-Modules/UART/UART.h</itemPath>
-          <itemPath>../00-Modules/UART/UART_Local.c</itemPath>
-          <itemPath>../00-Modules/UART/UART_Local.h</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX.h</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_API.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_Init.c</itemPath>
           <itemPath>../00-Modules/UART/UART_TX_ISR.c</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_Local.c</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_Local.h</itemPath>
+          <itemPath>../00-Modules/UART/UART_TX_Profile.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
@@ -87,7 +92,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.11</languageToolchainVersion>
+        <languageToolchainVersion>1.24</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -95,8 +100,11 @@
           <linkerLibItems>
           </linkerLibItems>
         </linkerTool>
+        <archiverTool>
+        </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
       </compileType>
@@ -147,6 +155,9 @@
         <property key="scalar-model" value="default"/>
         <property key="use-cci" value="false"/>
       </C30>
+      <C30-AR>
+        <property key="additional-options-chop-files" value="false"/>
+      </C30-AR>
       <C30-AS>
         <property key="assembler-symbols" value=""/>
         <property key="expand-macros" value="false"/>
@@ -167,6 +178,49 @@
         <property key="warning-level" value="emit-warnings"/>
       </C30-AS>
       <C30-LD>
+        <property key="additional-options-use-response-files" value="false"/>
+        <property key="boot-eeprom" value="no_eeprom"/>
+        <property key="boot-flash" value="no_flash"/>
+        <property key="boot-ram" value="no_ram"/>
+        <property key="boot-write-protect" value="no_write_protect"/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="enable-data-init" value="true"/>
+        <property key="enable-default-isr" value="true"/>
+        <property key="enable-handles" value="true"/>
+        <property key="enable-pack-data" value="true"/>
+        <property key="extra-lib-directories" value=""/>
+        <property key="fill-flash-options-addr" value=""/>
+        <property key="fill-flash-options-const" value=""/>
+        <property key="fill-flash-options-how" value="0"/>
+        <property key="fill-flash-options-inc-const" value="1"/>
+        <property key="fill-flash-options-increment" value=""/>
+        <property key="fill-flash-options-seq" value=""/>
+        <property key="fill-flash-options-what" value="0"/>
+        <property key="general-code-protect" value="no_code_protect"/>
+        <property key="general-write-protect" value="no_write_protect"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="heap-size" value=""/>
+        <property key="input-libraries" value=""/>
+        <property key="linker-stack" value="true"/>
+        <property key="linker-symbols" value=""/>
+        <property key="map-file" value="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"/>
+        <property key="oXC16ld-extra-opts" value=""/>
+        <property key="oXC16ld-fill-upper" value="0"/>
+        <property key="oXC16ld-force-link" value="false"/>
+        <property key="oXC16ld-no-smart-io" value="false"/>
+        <property key="oXC16ld-nostdlib" value="false"/>
+        <property key="oXC16ld-stackguard" value="16"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="true"/>
+        <property key="secure-eeprom" value="no_eeprom"/>
+        <property key="secure-flash" value="no_flash"/>
+        <property key="secure-ram" value="no_ram"/>
+        <property key="secure-write-protect" value="no_write_protect"/>
+        <property key="stack-size" value="16"/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="false"/>
       </C30-LD>
       <C30Global>
         <property key="fast-math" value="true"/>
